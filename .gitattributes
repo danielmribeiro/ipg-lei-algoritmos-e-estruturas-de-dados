@@ -9,3 +9,4 @@
 *.ascx linguist-detectable=false
 *.asax linguist-detectable=false
 *.bat linguist-detectable=false
+*.tex linguist-detectable=false
