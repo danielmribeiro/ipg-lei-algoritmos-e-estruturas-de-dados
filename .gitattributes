@@ -3,3 +3,9 @@
 *.html linguist-detectable=false
 *.aspx linguist-detectable=false
 *.js linguist-detectable=false
+*.cs linguist-detectable=false
+*.css linguist-detectable=false
+*.dfm linguist-detectable=false
+*.ascx linguist-detectable=false
+*.asax linguist-detectable=false
+*.bat linguist-detectable=false
