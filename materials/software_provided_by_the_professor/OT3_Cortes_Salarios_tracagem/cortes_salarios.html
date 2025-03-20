@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Cortes nos salários dos funcionários públicos</title>
+
+
+
+    <script type="text/JavaScript">
+        function relogio() {
+            var d = new Date();
+            caixa.value =
+            d.getHours()
+            + ":"
+            + d.getMinutes()
+            + ":" +
+            d.getSeconds()
+            // + ":" + d.getMilliseconds();
+            setTimeout("relogio()", 1000);
+        }
+    </script>
+
+    <script type="text/javascript">
+
+        function Troca(nome) {
+
+            var o = document.getElementById(nome);
+            if (o.style.display == "block")
+                o.style.display = "none";
+            else
+                o.style.display = "block"
+
+        }
+
+        function Calcular() {
+
+            //if (F.pol.value.length > 0)
+            // F.pol.value = (F.cm.value / 2.54).toFixed(3);
+
+            var v1 = corte_salario.v1.value;
+            var v2 = corte_salario.v2.value;
+            var t1 = corte_salario.t1.value;
+            var t2 = corte_salario.t2.value;
+
+            var v = corte_salario.v.value;
+            var Taxa = 0.0;
+            var Corte = 0.0;
+            var vc = 0.0;
+            var m = 0.0;
+            var b = 0.0;
+            var E = "";
+
+            if (v < v1)
+                Taxa = 0.0
+            else
+                if (v > v2)
+                    Taxa = t2;
+                else {
+                    m = (t2 - t1) / (v2 - v1);
+                    b = t2 - m * v2;
+                    Taxa = m * v + b;
+                }
+
+            Corte = v * Taxa / 100.0;
+            vc = v - Corte;
+            if (b > 0)
+                E = " Taxa = " + m.toFixed(4) + " V + " + Math.abs(b.toFixed(4));
+            else
+                E = " Taxa = " + m.toFixed(4) + " V - " + Math.abs(b.toFixed(4));
+
+            corte_salario.Taxa.value = Taxa.toFixed(3);
+            corte_salario.Corte.value = Corte.toFixed(2);
+            corte_salario.vc.value = vc.toFixed(2);
+            corte_salario.eq.value = E;
+
+
+            var tg = Math.ceil(Taxa * 10);
+            var cg = Math.ceil(Corte);
+
+
+            var g_Taxa = document.getElementById('v_per');
+            g_Taxa.style.width = tg + "px";
+            var G_Corte = document.getElementById('v_val');
+            G_Corte.style.width = cg + "px";
+
+
+            var o = document.getElementById('s_per');
+            o.innerHTML = Taxa.toFixed(3);
+            var o = document.getElementById('s_val');
+            o.innerHTML = Corte.toFixed(2);
+        }
+
+
+    </script>
+
+    <style type="text/css">
+        span.per
+        {
+            border: 1px solid gray;
+            background-color: lightsalmon;
+            float: left;
+            text-align: center;
+            height: 10px;
+        }
+
+        span.val
+        {
+            border: 1px solid gray;
+            background-color: rosybrown;
+            float: left;
+            text-align: center;
+            height: 10px;
+        }
+
+        input.resultado
+        {
+            background-color: lightgoldenrodyellow;
+        }
+
+        table, th, td
+        {
+            border: solid 1px gray;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+
+        th, td
+        {
+            vertical-align: central;
+        }
+    </style>
+</head>
+<!--  onload="relogio()"
+      <input type="text" id="caixa" size ='10' style="font-size: 24pt" />
+-->
+<body>
+
+    <h1>Cortes nos salários dos funcionários públicos</h1>
+
+    <script type="text/javascript">
+        var d = new Date()
+        //document.write("<h2>" + d + "</h2>");
+    </script>
+
+
+    <script type="text/javascript">
+        var d = new Date()
+        var hora = d.getHours()
+
+        if (hora < 12)
+            document.write("<h3>Bom Dia</h3>")
+        else
+            if (hora < 18)
+                document.write("<h3>Boa Tarde</h3>")
+            else
+                document.write("<h3>Boa Noite</h3>")
+    </script>
+
+
+
+    <form id='corte_salario' name='corte_salario' action=''>
+
+    <table>
+        <tr>
+            <th colspan='2'>Dados</th>
+        </tr>
+        <tr>
+            <th>Vencimento inicial (€)</th><td><input type='text' value='600.0' id='v1' name='v1' /></td>
+        </tr>
+        <tr>
+            <th>Taxa inicial (%)</th><td><input type='text' value='3.5' id='t1' name='t1' /></td>
+        </tr>
+        <tr>
+            <th>Vencimento final (€)</th><td><input type='text' value='2000.0' id='v2' name='v2' /></td>
+        </tr>
+        <tr>
+            <th>Taxa final (%)</th><td><input type='text' value='12.0' id='t2' name='t2' /></td>
+        </tr>
+        <tr>
+            <th>Vencimento (€)</th><td><input type='text' value='1200.0' id='v' name='v' /></td>
+        </tr>
+
+
+        <tr>
+            <th><input type='button' onclick='Calcular()' value='Calcular' /></th>
+            <td></td>
+        </tr>
+
+        <tr>
+            <th colspan='2'>Resuldados</th>
+        </tr>
+        <tr>
+            <th>Taxa (%)</th><td><input class="resultado" type='text' value='' id='Taxa' name='Taxa' /></td>
+        </tr>
+        <tr>
+            <th>Corte (€)</th><td><input class="resultado" type='text' value='' id='Corte' name='Corte' /></td>
+        </tr>
+        <tr>
+            <th>Vencimento com corte (€)</th><td><input class="resultado" type='text' value='' id='vc' name='vc' /></td>
+        </tr>
+
+        <tr>
+            <th>Equação da taxa de corte (%)</th><td><input class="resultado" type='text' size="40" value='' id='eq' name='eq' /></td>
+        </tr>
+
+        <tr>
+            <th colspan='2'>Gráfico</th>
+        </tr>
+
+        <tr>
+            <th>12%</th>
+            <td>
+                <span id='Span1' class='per' style='width: 120px; height: 20px;'></span>
+            </td>
+        </tr>
+        <tr>
+            <th>%</th>
+            <td>
+                <span id='v_per' class='val' style='width: 0px; height: 20px;'></span>
+                <span id='s_per' style="padding-left: 4px;"></span>
+            </td>
+        </tr>
+        <tr>
+
+
+            <th>600 €</th>
+            <td>
+                <span id='Span2' class='per' style='width: 600px; height: 20px'></span>
+            </td>
+        </tr>
+        <tr>
+            <th>€</th>
+            <td>
+                <span id='v_val' class='val' style='width: 0px; height: 20px'></span>
+                <span id='s_val' style="padding-left: 4px;"></span>
+            </td>
+        </tr>
+    </table>
+
+    </form>
+
+  
+</body>
+</html>

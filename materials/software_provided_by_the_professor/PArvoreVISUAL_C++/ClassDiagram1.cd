@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="CAluno" Collapsed="true">
+    <Position X="6.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAIEEEASAkAAACQAAAAEQQQEgAQELGAg=</HashCode>
+      <FileName>C:\Users\pnunes\Desktop\My Dropbox\1011\PII_EI\_20102011\CALUNO\P0\CAluno.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CBi" Collapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAKAIACAAAAAIIAWAAUEACAAAAABAJAQCAAAAAAAggA=</HashCode>
+      <FileName>C:\Users\pnunes\Desktop\My Dropbox\1011\PII_EI\_20102011\CALUNO\P0\CBi.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CContacto" Collapsed="true">
+    <Position X="5.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QACAAgAAgAAAAIikAAQAACAABAAACAAQAABAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pnunes\Desktop\My Dropbox\1011\PII_EI\_20102011\CALUNO\P0\CContacto.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CData" Collapsed="true">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AKWEEeg7FWAAxMJGA4UCAQp0AmAANBgQRQAyCARpUEA=</HashCode>
+      <FileName>C:\Users\pnunes\Desktop\My Dropbox\1011\PII_EI\_20102011\CALUNO\P0\CData.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CMorada" Collapsed="true">
+    <Position X="7" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAgAgAAAEAIAFAAQAAEIAABQAAQBSEEAAAAQACIA=</HashCode>
+      <FileName>C:\Users\pnunes\Desktop\My Dropbox\1011\PII_EI\_20102011\CALUNO\P0\CMorada.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPessoa">
+    <Position X="1.25" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>RQBIBEAAIAAIAIAPIQQAgEAAAAACABASAGEEBQAQAAA=</HashCode>
+      <FileName>C:\Users\pnunes\Desktop\My Dropbox\1011\PII_EI\_20102011\CALUNO\P0\CPessoa.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CAlunoArvore" Collapsed="true">
+    <Position X="0.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAQAgQAAAAAQAAFEAAAAABABAAAAAAAAkA=</HashCode>
+      <FileName>C:\Users\pnunes\Desktop\My Dropbox\1011\PII_EI\_20102011\CALUNO\CArvoreAluno\P0\CAlunoArvore.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CArvoreAluno" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEhwEC4wCGFCFQ5NogXgAdYCCoSATBDUBSlyAACD0gE=</HashCode>
+      <FileName>C:\Users\pnunes\Desktop\My Dropbox\1011\PII_EI\_20102011\CALUNO\CArvoreAluno\P0\CArvoreAluno.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CAlunoApontador" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAABAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pnunes\Desktop\My Dropbox\1011\PII_EI\_20102011\CALUNO\CArvoreAluno\P0\CArvoreAluno.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CFilaAlunoApontador" Collapsed="true">
+    <Position X="8.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAABAAAAAAAAAAAAAgAAAAAIAAAE=</HashCode>
+      <FileName>C:\Users\pnunes\Desktop\My Dropbox\1011\PII_EI\_20102011\CALUNO\CArvoreAluno\P0\CArvoreAluno.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CPilhaAlunoApontador" Collapsed="true">
+    <Position X="8.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAEAAAAEAAAAAAAAAAAAAAAAgAAAAAAAAAE=</HashCode>
+      <FileName>C:\Users\pnunes\Desktop\My Dropbox\1011\PII_EI\_20102011\CALUNO\CArvoreAluno\P0\CArvoreAluno.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CAlunoLista" Collapsed="true">
+    <Position X="3.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAACABAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pnunes\Desktop\My Dropbox\1011\PII_EI\_20102011\CALUNO\CListaAlunoIF\P0\CAlunoLista.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CListaAluno" Collapsed="true">
+    <Position X="5.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QABAAAQCCIACBAAMGgUiABAACAQCBAIQkAgBAAAAAQE=</HashCode>
+      <FileName>C:\Users\pnunes\Desktop\My Dropbox\1011\PII_EI\_20102011\CALUNO\CListaAlunoIF\P0\CListaAluno.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

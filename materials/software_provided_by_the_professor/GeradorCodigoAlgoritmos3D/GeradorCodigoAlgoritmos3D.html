@@ -1,0 +1,4487 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+  <script type="text/javascript">
+	
+	function VersaoNumber(){
+		v = "<h2>Gerador de algoritmos 3D (Versão de: 2013-02-17 19:24)</h2> <p>Fix bug: botões: Ler Dados Ficheiro | Dados Ficheiro</p>";
+		document.write(v);
+	}
+ 
+	var d_m = "titulo";
+	var NomeFicheiro = "";
+
+    //var AlgorithmDataTypes = new Array("Inteiro", "Real", "Moeda", "Texto", "Booleano", "Data", "Hora", "DataHora");
+    var AlgorithmDataTypes = new Array("Inteiro", "Real", "Moeda", "Texto", "Ficheiro", "Booleano", "Data", "Hora", "DataHora", "Referência");
+
+		var AlgorithmDataTypesNumbers = new Array(1, 2, 3, 4, 5, 6, 7, 8);
+    var TypeType = "1";
+    var CharType = " ";
+    var TextoEspacoMemoriaEspacoMemoria = "";
+		var DataHoraInicio = new Date();
+		
+		var TabelaEspacoMemoriaVBALogico = new Array();
+    var TabelaEspacoMemoriaVBAFisico = new Array();
+		
+		var TracagemVetorLinhas = new Array();
+		var TracagemVetorColunas = new Array();
+		
+  </script>
+
+  <title>Gerador de algoritmos</title>
+  <style type='text/css'>
+    #boxes {
+      font: 0.9em Arial, Helvetica, sans-serif;
+      width: 100%;
+      color: #333;
+      margin: 0;
+    }
+    .fixo {
+      margin: 0 auto;
+      width: 25em;
+      background: url(canto-inf-dir.jpg) no-repeat 100% 100%;
+      font-size: 100%;
+    }
+    .titulo {
+      background: url(canto-sup-dir.jpg) no-repeat 100% 0;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    .titulo h6 {
+      background: url(canto-sup-esq.jpg) no-repeat 0 0;
+      margin: 0;
+      padding: 45px 20px 5px;
+      color: #333;
+      font-weight: bold;
+      font-size: 1.4em;
+      line-height: 1.0em;
+    }
+    * html .titulo h6 {
+      height: 1%;
+    }
+    /* Hack para IE5 PC */.conteudo {
+      background: url(canto-inf-esq.jpg) no-repeat 0 100%;
+      color: #fff;
+      margin: 0;
+      padding: 5px 35px 45px;
+    }
+    #boxes .conteudo p {
+      margin: 0.7em;
+      line-height: 1.2em;
+    }
+    .elastico {
+      width: 100%;
+      background: url(canto-inf-dir.jpg) no-repeat 100% 100%;
+      font-size: 100%;
+    }
+    /*
+    div {
+      margin-bottom: 10px;
+      width: 70%;
+      padding: 10px;
+      border: solid thin black;
+    } */div.doc {
+      background-color: #CFECEC;
+      padding: 0px;
+      font-color: white;
+      margin: 0px;
+    }
+    div.entrada {
+      background-color: #ECD672;
+      padding: 0px;
+      margin-left: 1em;
+    }
+    div.proc {
+      background-color: #FDEEF4;
+      padding: 1px;
+      margin-left: 1em;
+    }
+    div.saida {
+      background-color: #4AFDA0;
+      padding: 1px;
+      margin-left: 1em;
+    }
+    div.corpo {
+      background-color: #AFC7C7;
+      padding: 3px;
+    }
+    div.alg {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: solid thin black;
+      background-color: #FFF8C6;
+      font-family: Consolas;
+      font-size: larger; /* position: absolute; */
+      position: relative;
+      border: 2px solid blue;
+      float: left;
+      width: 45%;
+      top: 0px;
+      left: 0px;
+    }
+    div.memo {
+      padding: 1px;
+      background-color: white;
+      font-family: Consolas; /* position: absolute; */
+      position: relative; /* border: 1px solid black;*/
+      float: left;
+      width: 100%;
+    }
+    div.bit_caixa {
+      padding: 1px;
+      background-color: #FFFFFF;
+      font-family: Consolas;
+      position: relative;
+      border: solid 1px black;
+      float: left;
+    }
+    div.bit_caixa_sem_caixa {
+      padding: 1px;
+      background-color: #FFFFFF;
+      font-family: Consolas;
+      position: relative;
+      border: 1px solid white;
+      float: left;
+    }
+    div.memo_matriz {
+      margin-left: 20px;
+      margin-top: 5px;
+      padding: 2px;
+      position: relative;
+      float: left;
+      width: 100%; /*border-left: 1px solid red;*/
+    }
+    div.memo_matriz_var {
+      margin-left: 20px;
+      margin-top: 5px;
+      padding: 2px;
+      position: relative;
+      float: left;
+      border: 1px solid green;
+    }
+    div.memo_matriz90 {
+      margin-left: 0%;
+      margin-top: 5px;
+      padding: 2px;
+      position: relative;
+      float: left;
+      width: 90%;
+      border-left: 2px solid brown;
+    }
+    div.memo_coordenada10 {
+      margin-left: 0%;
+      margin-top: 1px;
+      padding: 0px;
+      position: relative;
+      float: left;
+      width: 3%;
+    }
+    div.memo_celula100 {
+      margin-left: 0px;
+      margin-bottom: 1px;
+      padding: 0px;
+      position: relative;
+      float: left;
+      width: 100%; /*border: solid 1px red;*/
+    }
+    div.memo_celula {
+      margin-right: 5px;
+      padding-left: px;
+      padding: 0px;
+      position: relative;
+      float: left;
+      border: solid 1px black;
+    }
+    div.memo_celula_sem_caixa {
+      margin-right: 5px;
+      padding-left: px;
+      padding: 0px;
+      position: relative;
+      float: left;
+      border: solid 1px white;
+    }
+    div.separador_colunas {
+      margin-left: 20px;
+      padding-left: 0px;
+      position: relative;
+      float: left;
+      width: 2px;
+    }
+    div.memo_celula3pontos {
+      margin-left: 0px;
+      padding: 0px;
+      position: relative;
+      float: left;
+    }
+    div.memo_coordenada {
+      margin: 0px;
+      padding: 0px;
+      position: relative;
+      float: left;
+      width: 3%; /* border: 1px solid black; */
+    }
+    p.memo {
+      margin-bottom: 0px;
+      padding: 5px;
+      font-family: Consolas;
+    }
+    body {
+      background-color: white;
+    }
+    h1 {
+      color: black;
+      font: normal bold 18pt;
+      font-variant: small-caps;
+      margin: 5px;
+    }
+    h2 {
+      color: black;
+      font: normal bold 14pt;
+      font-variant: small-caps;
+      margin: 5px;
+    }
+    h3 {
+      color: blue;
+      font: normal bold 12pt;
+      margin: 5px;
+      font-variant: small-caps;
+    }
+    td.botoes, th.botoes {
+      border-top: solid 1px blue;
+      background-color: lightcyan;
+    }
+    th, td {
+      padding-top: 3px;
+      text-align: left;
+      padding-left: 3px;
+      border: solid 1px blue;
+    }
+    table {
+      /* width: 45%; */
+      border-collapse: collapse;
+      border: solid 1px blue;
+      background-color: #f0f0ff;
+    }
+    input.t {
+      border-color: green;
+      border-style: solid;
+      border-width: 1px;
+    }
+    input.t:hover {
+      border-color: red;
+    }
+    input.t:focus {
+      background-color: yellow;
+    }
+    input.t {
+      margin-right: 3px;
+      margin-left: 3px;
+    }
+    .n0 {
+      margin-left: 0px;
+    }
+    .n1 {
+      margin-left: 1em;
+    }
+    .n2 {
+      margin-left: 2em;
+    }
+    .n3 {
+      margin-left: 3em;
+    }
+    .n4 {
+      margin-left: 4em;
+    }
+    .n5 {
+      margin-left: 5em;
+    }
+    .n6 {
+      margin-left: 6em;
+    }
+    p, li, ul {
+      margin: 0px;
+    }
+    pre {
+      margin: 0px;
+    }
+    /* ---------------- */
+		th.bit, td.bit {
+      text-align: center;
+      padding: 0px;
+      margin: 0px;
+      border: solid 1px black;
+      width: 1em;
+      height: 1em;
+      border-collapse: collapse;
+      background-color: #ffffff; 
+			text-align: center;
+    }
+		th.bit0, td.bit0 {
+      text-align: center;
+      padding: 0px;
+      margin: 0px;
+      border: solid 1px black;
+      width: 1em;
+      height: 1em;
+      border-collapse: collapse;
+      background-color: red;
+			text-align: center;
+    }
+		th.bit1, td.bit1 {
+      text-align: center;
+      padding: 0px;
+      margin: 0px;
+      border: solid 1px black;
+      width: 1em;
+      height: 1em;
+      border-collapse: collapse;
+      background-color: green;
+			text-align: center;
+    }
+		
+		th.bit_cabecalho, td.bit_cabecalho {
+      text-align: center;
+      padding: 0px;
+      margin: 0px;
+      border: solid 1px black;
+      width: 1em;
+      height: 1em;
+			text-align: center;
+      border-collapse: collapse;
+      background-color: #ffffff;
+			font-size: 0.8em;
+			text-align: center;
+			/* p {font-size:0.875em;} 14px/16=0.875em */
+    }
+		
+		
+		th.bit_sinal, td.bit_sinal {
+      text-align: center;
+      padding: 0px;
+      margin: 0px;
+      border: solid 1px black;
+      width: 1em;
+      height: 1em;
+			color: red;
+      border-collapse: collapse;
+      background-color: #ffffff;
+			text-align: center;
+    }
+		th.bit_exp, td.bit_exp {
+      text-align: center;
+      padding: 0px;
+      margin: 0px;
+      border: solid 1px black;
+      width: 1em;
+      height: 1em;
+			color: green;
+      border-collapse: collapse;
+      background-color: #ffffff;
+			text-align: center;
+    }
+		
+    th.bit_sem_caixa, td.bit_sem_caixa {
+      text-align: center;
+      padding: 0px;
+      margin: 0px;
+      border: solid 1px white;
+      width: 1em;
+      height: 1em;
+      border-collapse: collapse;
+      background-color: #ffffff;
+			text-align: center;
+    }
+    table.bits {
+      /* width: 45%; */
+      padding: 0px;
+      margin: 0px;
+      font-family: Consolas;
+      border-collapse: collapse;
+      border: solid 1px black;
+      background-color: #ffffff;
+    }
+    table.bits_sem_caixa {
+      /* width: 45%; */
+      padding: 0px;
+      margin: 0px;
+      font-family: Consolas;
+      border-collapse: collapse;
+      border: solid 1px white;
+      background-color: #ffffff;
+    }
+    table.byte {
+      /* width: 45%; */
+      font-family: Consolas;
+      border-collapse: collapse; /* border: solid thin magenta;*/ /*     background-color: #f0f0ff;*/
+    }
+    table.tracagem {
+      /* width: 45%; */
+      font-family: Consolas;
+      border-collapse: collapse;
+      border: solid 1px black;
+      background-color: #ffffff;
+    }
+    th.tracagem, td.tracagem {
+      text-align: center;
+      padding: 0px;
+      border: solid 1px black;
+      width: 6em;
+      height: 2em;
+      background-color: #ffffff;
+    }
+    th.tracagemEcra, td.tracagemEcra {
+      text-align: center;
+      padding: 0px;
+      border: solid 1px black;
+      width: 18em;
+      height: 2em;
+      background-color: #ffffff;
+    }
+	
+	pre {
+	font-family:  consolas,arial;
+	font-size: 11pt;
+
+	}
+  </style>
+
+  <script type="text/javascript">
+
+    /* armazena no formato: */
+    function LinhaEspacoMemoria(ConstanteVarivel, Nome, TipoDeDados, Tamanho,
+	DimensaoLinhas, DimensaoColunas, DimensaoAltura,
+     Descricao, Unidades, LimiteInferior, LimiteSuperior, Valores) {
+      this.ConstanteVarivel = ConstanteVarivel;
+      this.Nome = Nome;
+      this.TipoDeDados = TipoDeDados;
+      this.Tamanho = Tamanho;
+      this.DimensaoLinhas = DimensaoLinhas;
+      this.DimensaoColunas = DimensaoColunas;
+      this.DimensaoAltura = DimensaoAltura;
+      this.Descricao = Descricao;
+      this.Unidades = Unidades;
+      this.LimiteInferior = LimiteInferior;
+      this.LimiteSuperior = LimiteSuperior;
+      this.Valores = Valores;
+      return this;
+    }
+    //var a = new LinhaEspacoMemoria();
+    //alert(a.DimensaoAltura);
+    //var t = new Array();
+    //t[0] = a;
+    //alert(t[0].Tamanho); 
+   
+
+    function timeMsg() {
+      var t = setTimeout("alertMsg()", 3000);
+    }
+    function alertMsg() {
+      alert("Hello");
+    }
+
+
+
+    /* This script and many more are available free online at
+    The JavaScript Source!! http://javascript.internet.com
+    Created by: Robert Nyman | http://robertnyman.com/ */
+    function removeHTMLTags(strInputCode) {
+      //if(document.getElementById && document.getElementById("input-code")){
+      //	var strInputCode = document.getElementById("input-code").innerHTML;
+      /* 
+      This line is optional, it replaces escaped brackets with real ones, 
+      i.e. < is replaced with < and > is replaced with >
+      */
+      strInputCode = strInputCode.replace(/&(lt|gt);/g, function (strMatch, p1) {
+        return (p1 == "lt") ? "<" : ">";
+      });
+      var strTagStrippedText = strInputCode.replace(/<\/?[^>]+(>|$)/g, "");
+      //alert("Output text:\n" + strTagStrippedText);	
+      return strTagStrippedText;
+      // Use the alert below if you want to show the input and the output text
+      //		alert("Input code:\n" + strInputCode + "\n\nOutput text:\n" + strTagStrippedText);	
+      //	}	
+    }
+
+    function displayDate() {
+      document.getElementById("demo_date").innerHTML = Date();
+    }
+
+    function replaceChars(entry, out, add) {
+      //out = "a"; // replace this
+      //add = "z"; // with this
+      temp = "" + entry; // temporary holder
+
+      while (temp.indexOf(out) > -1) {
+        pos = temp.indexOf(out);
+        temp = "" + (temp.substring(0, pos) + add + temp.substring((pos + out.length), temp.length));
+      }
+    }
+    /*
+    #include <stdio.h>
+    #include <limits.h>
+    // http://www.exforsys.com/tutorials/c-language/c-programming-language-data-types.html
+    void main()
+    {
+    printf("Signed char minimum value: %d\n", SCHAR_MIN );
+    printf("Signed char maximum value: %d\n", SCHAR_MAX );
+    printf("Unsigned char minimum value: %d\n", 0 );
+    printf("Unsigned char maximum value: %d\n", UCHAR_MAX );
+    printf("Char minimum value: %d\n", CHAR_MIN );
+    printf("Char maximum value: %d\n", CHAR_MAX );
+    printf("Signed short minimum value: %d\n", SHRT_MIN );
+    printf("Signed short maximum value: %d\n", SHRT_MAX );
+    printf("Unsigned short minimum value: %d\n", 0 );
+    printf("Unsigned short maximum value: %d\n", USHRT_MAX );
+    printf("Signed int minimum value: %d\n", INT_MIN );
+    printf("Signed int maximum value: %d\n", INT_MAX );
+    printf("Unsigned int minimum value: %u\n", 0 );
+    printf("Unsigned int maximum value: %u\n", UINT_MAX );
+    printf("Signed long minimum value: %ld\n", LONG_MIN );
+    printf("Signed long maximum value: %ld\n", LONG_MAX );
+    printf("Unsigned long minimum value: %lu\n", 0 );
+    printf("Unsigned long maximum value: %lu\n", ULONG_MAX );
+    printf("Signed long long minimum value: %lld\n", LLONG_MIN );
+    printf("Signed long long maximum value: %lld\n", LLONG_MAX );
+    printf("Unsigned long long minimum value: %lu\n", 0 );
+    printf("Unsigned long long maximum value: %llu\n", ULLONG_MAX );
+    }
+
+    Type	Minimum Value	Maximum Value
+    signed char	-127	127
+    unsigned char	0	255
+    short	-32.767	32.767
+    unsigned short	0	65.535
+    int														 -32.767   32.767
+    unsigned int												 0   65.535
+    long										-2.147.483.647 	 2.147.483.647   10
+    unsigned long												 0   4.294.967.295
+    signed long long	-9223372036854775807	 9.223.372.036.854.775.807   18
+    unsigned long long	                 0   18.446.744.073.709.551.615  19
+
+    Minimum value of a float: 1.1755e-38 Maximum value of a float: 3.4028e+38 Precision of a float: 6 digits 
+    Minimum value of a double: 2.2251e-308 Maximum value of a double: 1.7977e+308 Precision of a double: 15 digits 
+    Minimum value of a long double: 3.3621e-4932 Maximum value of a long double: 1.1897e+4932 Precision of a long double: 18 digits 
+	
+	
+    */
+    //alert(TypeFromAlgorithmToLPC("Inteiro", 20));
+
+    function TypeFromAlgorithmToLPC(type, dim) {
+      typeLPC = "";
+      //alert(type + " " + dim)
+      TypeType = "1";
+      if (type == AlgorithmDataTypes[0]) // Inteiro
+        if (dim <= 2)
+          typeLPC = "int"
+        else
+          if (dim <= 4)
+            typeLPC = "int"
+          else
+            if (dim <= 9)
+              typeLPC = "long"
+            else if (dim <= 18)
+              typeLPC = "long long"
+            else {
+              typeLPC = "char";
+              TypeType = '"' + (dim + 1) + '"';
+            }
+      else if (type == "Moeda")
+        TypeType = "double"
+      else if (type == "Real") {
+
+        p = dim.indexOf(".");
+        if (p == -1)
+          dimF = 6;
+        else {
+          b = dim.substr(0, p);
+          a = dim.substr(p + 1, 20);
+
+          //	alert(a);
+          dimF = parseInt(a);
+          dimI = parseInt(b);
+          if (dimF < 1) dimF = 6;
+          if (dimI > dimF) dimF = dimI;
+        }
+
+        //alert(dimF);
+
+        if (dimF <= 6)
+          typeLPC = "float";
+        else if (dimF <= 15)
+          typeLPC = "double";
+        else
+          typeLPC = "long double";
+      } else if (type == "Texto") {
+        typeLPC = "char";
+        TypeType = '"' + (dim + 1) + '"';
+      } else if (type == "Data") {
+        typeLPC = "char";
+        TypeType = "11";
+      } else if (type == "Hora") {
+        typeLPC = "char";
+        TypeType = "9";
+      } else if (type == "DataHora") {
+        typeLPC = "char";
+        TypeType = "20";
+      } else if (type == "Booleano") {
+        typeLPC = "int";
+      }
+
+      CharType = "_";
+      if (typeLPC == "char")
+        CharType = "s";
+      else if (typeLPC == "int")
+        CharType = "d";
+      else if (typeLPC == "long")
+        CharType = "ld";
+      else if (typeLPC == "long long")
+        CharType = "ld";
+      else if (typeLPC == "float")
+        CharType = "f";
+      else if (typeLPC == "double")
+        CharType = "lf";
+      else if (typeLPC == "long double")
+        CharType = "Lf";
+
+      // alert(CharType);
+      //alert(typeLPC);
+      return typeLPC;
+
+    }
+
+
+
+
+
+
+
+
+
+
+    function TypeFromAlgorithmToVBA(type, dim, valor) {
+      typeVBA = "";
+      //alert(type + " " + dim)
+      TypeType = "1";
+      if (type == AlgorithmDataTypes[0])
+        if (dim <= 2)// || (valor <=255))
+          typeVBA = "Byte"
+        else
+          if (dim <= 4)
+            typeVBA = "Integer"
+          else
+            if (dim <= 4)
+              typeVBA = "Integer"
+            else
+              if (dim <= 9)
+                typeVBA = "Long"
+              else if (dim <= 28)
+                typeVBA = "Decimal"
+              else {
+                typeVBA = "String * " + dim;
+                TypeType = "2";
+              }
+      // Decimal 16 bytes
+      // 0 through +/-79,228,162,514,264,337,593,543,950,335 (+/-7.9...E+28) † with no 
+      // decimal point; 
+      // 0 through +/-7.9228162514264337593543950335 with 28 places to the right of the decimal; 
+      // smallest nonzero number is +/-0.0000000000000000000000000001 (+/-1E-28) †
+      // http://msdn.microsoft.com/en-us/library/47zceaw7.aspx
+      // [0, 255]
+      // [-32 768, 32 767] 
+      // [-2 147 483 648, 2 147 483 647] 
+
+
+      // The Currency data type uses 8 bytes of memory and can represent numbers 
+      // with fifteen digits to the left of the decimal point and four to the right,
+      // in the range of -922,337,203,685,477.5808 to 922,337,203,685,477.5807.
+      if (type == "Moeda")
+        TypeType = "Currency"
+
+      //VBA provides two floating-point data types, Single and Double. 
+      // The Single data type
+      // requires 4 bytes of memory and can store 
+      // negative values between -3.402823 x 10 +38  and -1.401298 x 10-45 and 
+      // positive values between 1.401298 x 10-45 and 3.402823 x 10 +38. 
+      // The Double data type requires 8 bytes of memory 
+      // and can store negative values between -1.79769313486232 x 10 +308 
+      // and -4.94065645841247 x 10-324 and positive values between 4.94065645841247 x 10-324 
+      // and 1.79769313486232 x 10 +308. 
+      if (type == "Real") {
+        p = dim.indexOf(".");
+        if (p == -1)
+          dimF = 6;
+        else {
+					
+					b = dim.substr(0, p);
+          a = dim.substr(p + 1, 20);
+					
+
+          //	alert(a);
+          dimF = parseInt(a);
+          dimI = parseInt(b);
+          if (dimF < 1) dimF = 6;
+          if (dimI > dimF) dimF = dimI;
+        }
+        if (dimF > 6)
+          typeVBA = "Double";
+        else
+          typeVBA = "Single";
+      }
+
+      if (type == "Texto") {
+        typeVBA = "String * " + dim;
+        TypeType = "2";
+      }
+
+      // The default value of Date is 0:00:00 (midnight) on January 1, 0001.
+      // Holds IEEE 64-bit (8-byte) values that represent dates ranging from January 1 of the year 0001 
+      //through December 31 of the year 9999, and times from 12:00:00 AM (midnight) through 11:59:59.9999999 PM. 
+      // Each increment represents 100 nanoseconds of elapsed time since the beginning of January 1 of the year 1 in the Gregorian calendar. 
+      // The maximum value represents 100 nanoseconds before the beginning of January 1 of the year 10000.
+      if (type == "Data") {
+        typeVBA = "Date";
+        TypeType = "2";
+      }
+      if (type == "Hora") {
+        typeVBA = "Date";
+        TypeType = "2";
+      }
+      if (type == "DataHora") {
+        typeVBA = "Date";
+        TypeType = "2";
+      }
+
+      //The Boolean data type is a special case of an integer data type. 
+      // The Boolean data type can contain True or False; internally, 
+      // VBA stores the value of True as -1, and the value of False as 0. 
+      if (type == "Booleano") {
+        typeVBA = "Boolean";
+      }
+
+      return typeVBA;
+    }
+
+
+    function MudaPercAlgoritmo(v) {
+
+
+         aa = new Array("DadosFicheiro","Tracagem", "Algoritmo", "VBA", "LPC", "Algoritmo", "VBA", "LPC", "EspacoMemoria",
+			 "DivAlgorithmSend","EspacoMemoriaVBALogico", "EspacoMemoriaVBAFisico");
+		// "DivTiposDadosVBA", "DivAlgorithmSendTest",
+ 
+      for (i = 0; i < aa.length; i++) {
+        var d = aa[i];
+        if (i >= 3) d + "Buttons";
+        var p = document.getElementById(d).style.width;
+        var x = parseInt(p);
+        document.getElementById(d).style.width = (x + v) + '%';
+      }
+    }
+
+    function MudaPercAlgoritmo100() {
+
+
+      aa = new Array("DadosFicheiro","Tracagem", "Algoritmo", "VBA", "LPC", "Algoritmo", "VBA", "LPC", "EspacoMemoria",
+			 "DivAlgorithmSend","EspacoMemoriaVBALogico", "EspacoMemoriaVBAFisico");
+ 
+			for (i = 0; i < aa.length; i++) {
+        var d = aa[i];
+        if (i >= 3) d + "Buttons";
+        var p = document.getElementById(d).style.width;
+        var x = parseInt(p);
+				if ((d=="Tracagem") || (d=="EspacoMemoria"))
+					document.getElementById(d).style.width = (200) + '%';
+				else
+					document.getElementById(d).style.width = (100) + '%';				
+      }
+			
+			
+			
+			
+    }
+		
+		
+		
+		
+		
+    function MudaLinhas(v) {
+
+
+      aa = new Array("TextAreaAlgorithm", "TextAreaVBA", "TextAreaLPC");
+      for (i = 0; i < aa.length; i++) {
+        var d = aa[i];
+        var p = document.getElementById(d).cols;
+        var x = parseInt(p);
+        document.getElementById(d).cols = (x + v);
+      }
+    }
+
+
+    function MudaLinhasTest(v) {
+
+
+      aa = new Array("TextAreaAlgorithmTest", "TextAreaVBATest", "TextAreaLPCTest");
+      for (i = 0; i < aa.length; i++) {
+        var d = aa[i];
+        var p = document.getElementById(d).cols;
+        var x = parseInt(p);
+        document.getElementById(d).cols = (x + v);
+      }
+    }
+
+
+
+    function GerarVar(op) {
+
+
+      CriaTabelaE(n_ve.value, 'VariaveisEntrada', N, op);
+      CriaTabelaE(n_vs.value, 'VariaveisSaida', N, op);
+      CriaTabelaE(n_a.value, 'VariaveisAuxiliares', N, op);
+      CriaTabelaE(n_c.value, 'Constantes', N, op);
+      Gerar(op);
+
+    }
+
+    function MudaFonteAlgoritmo(f) {
+      aa = new Array("Algoritmo", "VBA", "LPC", "Algoritmo", "VBA", "LPC", "EspacoMemoria");
+      for (i = 0; i < aa.length; i++)
+        document.getElementById(aa[i]).style.fontFamily = f;
+    }
+
+    function Fonte(v) {
+      aa = new Array("Algoritmo", "VBA", "LPC", "Algoritmo", "VBA", "LPC", "EspacoMemoria");
+      for (i = 0; i < aa.length; i++) {
+        var x = parseInt(document.getElementById(aa[i]).style.fontSize);
+        document.getElementById(aa[i]).style.fontSize = (x + v) + '%';
+      }
+    }
+
+    function LimpaCampos() {
+      var tvars = new Array("TConstantes", "TVariaveisEntrada", "TVariaveisAuxiliares", "TVariaveisSaida");
+      for (j = 0; j < tvars.length; j++) {
+        var L = document.getElementById(tvars[j]).rows.length;
+        for (i = 1; i < L; i++) {
+          var C = document.getElementById(tvars[j]).rows[0].cells.length;
+          for (k = 0; k < C; k++)
+            document.getElementById(tvars[j]).rows[i].cells[k].childNodes.item(0).value = "";
+        }
+      }
+    }
+
+
+
+    function TextoNivel(N, tx) {
+
+      return "<p class='n" + N + "'>" + tx + "</p>";
+
+      var b = "";
+      var n = N * 2;
+      if (n > 0) b += " ";
+      if (n > 1) b += " ";
+      if (n > 2) b += " ";
+      if (n > 3) b += " ";
+      if (n > 4) b += " ";
+      if (n > 5) b += " ";
+      if (n > 6) b += " ";
+      if (n > 7) b += " ";
+      return "<pre>" + b + tx + "</pre>";
+
+
+
+      var b = "";
+      //for(i=0; i<n; i++)
+      var n = N * 2;
+      if (n > 0) b += "&nbsp;";
+      if (n > 1) b += "&nbsp;";
+      if (n > 2) b += "&nbsp;";
+      if (n > 3) b += "&nbsp;";
+      if (n > 4) b += "&nbsp;";
+      if (n > 5) b += "&nbsp;";
+
+      //b = "<pre>   </pre>";	 
+
+      return "<p class='n0'>" + b + tx + "</p>";
+
+
+    }
+
+
+    function CriaTabelaE(n, name, NN, opo) {
+      
+	  var input_text;
+	  
+	  var VE = document.getElementById(name);
+	  var t = document.getElementById("T" + name);
+
+      if (t != null)
+        VE.removeChild(t);
+
+
+      // creates an element whose tag name is TABLE
+      mytable = document.createElement("table");
+      mytable.setAttribute("id", "T" + name);
+      // creates an element whose tag name is TBODY
+
+      th = document.createElement("thead");
+      mycurrent_row = document.createElement("tr");
+
+      //LL = new Array("", "Tipo", "Tamanho", "DimLinhas", "DimColunas", "DimAltura", "Desc", "Uni", "", "", "");
+      LL = new Array("", "Tipo", "Tamanho", "DimLinhas", "DimColunas", "DimAltura", "Desc", "Uni", "", "", "");
+
+      if ((name == "VariaveisEntrada") || (name == "VariaveisSaida") || (name == "VariaveisAuxiliares")) {
+        table_heads = new Array(
+          "Variável",
+          "Tipo de dados",
+					"Tamanho",
+					"Dimensão linhas",
+					"Dimensão colunas",
+					"Dimensão altura",
+          "Descrição",
+          "Unidades",
+          "Limite inferior",
+		      "Limite superior",
+					"Valor(es)(,)");
+        LL[8] = ">= Li";
+        LL[9] = "<= Ls";
+      } else {
+        table_heads = new Array(
+          "Constante",
+          "Tipo de dados",
+					"Tamanho",
+					"Dimensão linhas",
+					"Dimensão colunas",
+					"Dimensão altura",
+          "Descrição",
+          "Unidades",
+		  "Valor(es)(,)");
+        LL[8] = "Valor";
+      }
+      LL[0] = table_heads[0];
+      if (name == "VariaveisEntrada") LL[0] = "Entrada";
+      else if (name == "VariaveisSaida") LL[0] = "Saida";
+      else if (name == "VariaveisAuxiliares") LL[0] = "Aux";
+
+
+
+
+      for (i = 0; i < table_heads.length; i++) {
+        mycurrent_cell = document.createElement("td");
+        currenttext = document.createTextNode(table_heads[i]);
+        mycurrent_cell.appendChild(currenttext);
+        mycurrent_row.appendChild(mycurrent_cell);
+      }
+      th.appendChild(mycurrent_row);
+      mytable.appendChild(th);
+
+      mytablebody = document.createElement("TBODY");
+      // creating all cells
+      for (j = 0; j < n; j++) {
+        // creates an element whose tag name is TR
+        mycurrent_row = document.createElement("tr");
+
+        for (i = 0; i < table_heads.length; i++) {
+          mycurrent_cell = document.createElement("td");
+          size = 8;
+          if (i == 6) size = 30;
+          if (i == 0) size = 20;
+          if (i == 1) {
+            /*ss = "<select size='1' name='C" + j + i + "'>";
+            ss += "</select>";
+            input_text = document.createElement(ss);*/
+			input_text = document.createElement("select");
+			input_text.setAttribute("size","1");
+			input_text.setAttribute("name",'C' + j + i);
+			
+
+            var op = document.createElement("option");
+            //op.text = " ";
+			op.setAttribute("value"," ");
+            //input_text.add(op);
+			input_text.appendChild(op);
+
+            var tipos = AlgorithmDataTypes;
+            //var tipos2 = new Array("", ":Vetor", ":Matriz");
+            var tipos2 = new Array("");
+
+            for (y = 0; y < tipos2.length; y++)
+              for (k = 0; k < tipos.length; k++) {
+                var op = document.createElement("option");
+                //op.text = tipos[k] + tipos2[y];
+				theText = document.createTextNode(tipos[k] + tipos2[y]);
+				op.appendChild(theText);
+                //input_text.add(op);
+				input_text.appendChild(op);
+              }
+
+          } else {
+            if (opo == 1) {
+              if ((i >= 2) && (i <= 5))
+                XX = 0;
+              else
+                XX = LL[i] + j;
+
+              //if (i == 3) XX = 4;
+              //if (i == 4) XX = 4;
+              //if (i == 5) XX = 0;
+              if (i == 2) XX = 2;
+
+            } else {
+              XX = "________";
+              if (i == 2)
+                XX = "________________________";
+
+            }
+            /*input_text = document.createElement("<input onkeyup='Gerar(1);' type='text' size='" + String(size) + "' name='C" + String(j) + String(i) + "'" + " value='" + String(XX) + "' />");
+            input_text.type='text';
+            input_text.onkeyup='Gerar(1);';
+            input_text.size="'" + size + "'";
+            input_text.name="'C" + j + i + "'";  
+            input_text.value="'" + XX + "'";*/
+			input_text = document.createElement("input");
+		    input_text.setAttribute("onkeyup", "Gerar(1);");
+			input_text.setAttribute("type", "text");
+			input_text.setAttribute("size", size);
+			input_text.setAttribute("name", "C" + j + i );
+			input_text.setAttribute("value", XX);
+
+          }
+
+          input_text.onchange = function () {
+            Gerar(1);
+          }
+
+          mycurrent_cell.appendChild(input_text);
+          mycurrent_cell.setAttribute("align", "left");
+          mycurrent_row.appendChild(mycurrent_cell);
+        }
+        // appends the row TR into TBODY
+        mytablebody.appendChild(mycurrent_row);
+      }
+      // appends TBODY into TABLE
+      mytable.appendChild(mytablebody);
+      // appends TABLE into BODY
+      VE.appendChild(mytable);
+      // sets the border attribute of mytable to 2;
+      mytable.setAttribute("border", "2");
+      mytable.setAttribute("id", "T" + name);
+
+
+    }
+
+		function DesenhaBitsTabela(valorBinario) {
+      var t = "<table class='bit'>";
+      var a = (bytes * 8) - valorBinario.length;
+      var zeros = "";
+      for (i = 1; i <= a; i++)
+        zeros += "0";
+      valorBinario = zeros + valorBinario;
+      t += "<tr><th>bit</th>";
+      for (i = 0; i < bytes * 8; i++)
+        t += "<th class='bit'>" + (bytes * 8 - i - 1) + "</th>";
+      t += "</tr>";
+      t += "<tr><td></td>";
+      for (i = 0; i < bytes * 8; i++)
+        t += "<td class='bit'>" + valorBinario.substr(i, 1) + "</td>";
+      t += "</tr>";
+      t += "</table>";
+      return t;
+    }
+		function Formata(alinhamento, valor, dimI, dimF) {
+		  var z = "";
+			var s="";
+		  if(dimF > 0) {
+				if (valor =="") FF = " "; else FF = "0";
+		  	var diV=0;
+		  	var dfV=0;
+				var dim = valor;
+			  var p = dim.indexOf(".");
+			  if (valor =="") {
+          diV = 0;
+					dfV = 0;
+					valor = ".";
+				}else if (p == -1) {
+				  diV = valor.length;
+          valor += ".";
+        } else {
+          a = dim.substr(0, p);
+          b = dim.substr(p + 1, 20);
+          diV = a.length;
+          dfV = b.length;
+        }
+        if (diV < 0) diV = 0;
+        var dif = diV - dimI;
+        
+				var s2="";
+				if (dif < 0) {
+          // espaços em falta.
+          var i;
+          for (i = 0; i < -dif; i++)
+            s2 += " ";
+        }
+				
+        var dif = (dimF - dfV);
+        if (dif > 0) {
+          // insere zeros à direita do valor.
+          var i;
+          z = "";
+          for (i = 0; i < dif; i++)
+            z += FF;
+        }
+  			if (alinhamento == "DIR")
+		  			valor = s2 + valor  + z;
+			  else
+					valor = valor + z + s2;				
+			} else { /* numero inteiro / texto / .. */
+				var i;
+				if (valor.length > dimI)
+					valor = valor.substr(0,dimI);
+				var dif = dimI-valor.length;
+        for (i = 0; i < dif; i++)
+          s += " ";
+				if (alinhamento == "DIR")
+					valor = s + valor;
+				else
+					valor = valor + s;	
+			}
+			return valor;
+		}
+    function CaixaEspacoMemoriaCell(alinhamento, classe_cell, classe_bit, table_bit, td_bit, endereco_bool, dim, dimI, dimF, valor, valorO) {
+      // dim - I.F
+      var t = "";
+			valor = Formata(alinhamento, valor, dimI, dimF);
+			//proc.value = valor;
+ 
+      bit = 15;
+      style = "style='width: " + (bit) + "px;'";
+      bit_cx = "<div class='" + classe_bit + "' " + style + " >";
+      fecha_bit = "</div>";
+      bit_cx_ponto = "<div class='" + classe_bit + "' " + style + " >.</div>";
+
+			bit_td = "<td class='" + td_bit + "'>";
+			bit_tdf = "</td>";
+			
+      if (endereco_bool == 1) {
+        t += "  <div class='memo_coordenada'>";
+        t += (iL + 1);
+        t += "  </div>";
+      }
+      t += "<div class='" + classe_cell + "'>";
+			// com table
+			t += "<table class='"+ table_bit + "'>";
+			for (i = 0; i < valor.length; i++) {
+        bit_valor = valor.substr(i, 1);
+        t += bit_td + bit_valor + bit_tdf;
+      }
+     	t +="</table>"
+      t += "</div>";
+      return t;
+    }
+
+
+    function CaixaEspacoMemoria(nome, desc, tipo, tamanho, valor, Li, Ls, dim_linhas, dim_colunas, dim_altura, max_linhas, max_colunas, max_altura) {
+      var dimI = 0;
+      var dimF = 0;
+      var i = 0;
+      var valorO = valor;
+      if (valor == "####") valor = "                           ";
+			
+			var alinhamento="ESQ";
+			if ((tipo == "Inteiro") || (tipo == "Real") || (tipo == "Moeda"))
+				alinhamento = "DIR";
+		
+
+      dim = tamanho;
+      p = dim.indexOf(".");
+      if (p == -1) {
+        dimI = parseInt(tamanho);
+      } else {
+        a = dim.substr(0, p);
+        b = dim.substr(p + 1, 20);
+        dimI = parseInt(a);
+        dimF = parseInt(b);
+      }
+      dimI -= dimF;
+      if (dimI < 0) dimI = 0;
+      tamanho = parseInt(tamanho);
+      bit = 15;
+
+      //proc.value = "a" + a + " b" + b + " I" + dimI + " F" + dimF;
+
+      bit = 15;
+      style = "style='width: " + (bit) + "px;'";
+      bit_cx = "<div class='bit_caixa' " + style + " >";
+      fecha_bit = "</div>";
+      bit_cx_ponto = "<div class='bit_caixa' " + style + " >.</div>";
+
+      var DL = parseInt(dim_linhas);
+      var DC = parseInt(dim_colunas);
+      var DA = parseInt(dim_altura);
+
+      var iL = 0;
+      var iC = 0;
+      var iA = 0;
+
+			var T2 = tamanho;
+			if (dimF > 0) T2 += "." + dimF;
+      var t = "<div class='memo'>";
+      t += "<p class='memo'>" + nome + " (" + tipo + " T" + T2 + ") ";
+
+      var valores = valor.split(",");
+      //proc.value = valores.length;
+
+      if ((DL == 0) && (DC == 0) && (DA == 0)) {
+        if ((Li != "") || (Ls != "")) t += " (";
+        if (Li != "") t += Li;
+        if ((Li != "") && (Ls != "")) t += ", ";
+        if (Ls != "") t += Ls;
+        if ((Li != "") || (Ls != "")) t += ")";
+        var diV = 0;
+        var dfV = 0;
+        dim = valor;
+
+        t += "<div class='separador_colunas'> </div>";
+        t += CaixaEspacoMemoriaCell(alinhamento, "memo_celula_sem_caixa", "bit_caixa_sem_caixa", "bits", "bit" ,0, dim, dimI, dimF, valor, valorO);
+
+      } else if ((DL > 0) && (DC == 0) && (DA == 0)) {
+        /* DL > 0 DL > 0 DL > 0 DL > 0 DL > 0 DL > 0 DL > 0 DL > 0*/
+
+
+
+        t += "[<font color='red'>" + DL + "</font>]";
+
+        if ((Li != "") || (Ls != "")) t += " (";
+        if (Li != "") t += Li;
+        if ((Li != "") && (Ls != "")) t += ", ";
+        if (Ls != "") t += Ls;
+        if ((Li != "") || (Ls != "")) t += ")";
+        t += "</p>";
+        t += "<div class='memo_matriz'>";
+        var menor;
+        if (DL < max_linhas) menor = DL; else menor = max_linhas;
+        menor -= 1;
+        for (iL = 0; iL < DL; iL++) {
+          if (iL < valores.length) dim = valores[iL]; else dim = "";
+					if (valores.length == 1) dim = valores[0];
+          valor = dim;
+          t += "<div class='memo_celula100'>";
+          t += "  <div class='memo_coordenada'>";
+          t += (iL + 1);
+          t += "  </div>";
+          t += CaixaEspacoMemoriaCell(alinhamento,"memo_celula_sem_caixa", "bit_caixa", "bits", "bit", 0, dim, dimI, dimF, valor, valorO);
+          t += "</div>";
+          if ((iL == menor - 1) && (max_linhas < DL)) {
+            iL = DL - 2;
+            t += "  <div class='memo_coordenada'> </div>";
+            t += "  <div class='memo_celula3pontos'>..</div>";
+          }
+        }
+        t += "</div>";
+      } else if ((DL > 0) && (DC > 0) && (DA == 0)) {
+        t += "[<font color='red'>" + DL + "</font>]" + "[<font color='blue'>" + DC + "</font>]";
+        if ((Li != "") || (Ls != "")) t += " (";
+        if (Li != "") t += Li;
+        if ((Li != "") && (Ls != "")) t += ", ";
+        if (Ls != "") t += Ls;
+        if ((Li != "") || (Ls != "")) t += ")";
+        t += "</p>";
+			
+
+        // endereço colunas				
+        if (DC < max_colunas) menorC = DC; else menorC = max_colunas;
+        menorC -= 1;
+        t += "<div class='memo_matriz'>";
+        t += "<div class='memo_celula100'>";
+        t += "  <div class='memo_coordenada'> </div>";
+        var iC;
+				if (tipo == "Real") FF = 1; else FF = 0;
+        for (iC = 0; iC < DC; iC++) {
+          valor = String(iC + 1);
+          dim = valor;
+				  valorO = valor;
+          t += CaixaEspacoMemoriaCell(alinhamento,"memo_celula_sem_caixa", "bit_caixa_sem_caixa", "bits_sem_caixa", "bit_sem_caixa", 0, dim, (dimI+dimF+FF),0, valor, valorO);
+          if ((iC == menorC - 1) && (max_colunas < DC)) {
+            iC = DC - 2;
+            t += "  <div class='memo_celula3pontos'>..</div>";
+          }
+        }
+        t += "</div>"
+        t += "</div>"
+        // endereço colunas:end				
+
+
+        var menor;
+        if (DL < max_linhas) menor = DL; else menor = max_linhas;
+        menor -= 1;
+        t += "<div class='memo_matriz'>";
+        var iK = 0;
+        for (iL = 0; iL < DL; iL++) {
+
+          t += "<div class='memo_celula100'>";
+          t += "  <div class='memo_coordenada'>";
+          t += (iL + 1);
+          t += "  </div>";
+          if (DC < max_colunas) menorC = DC; else menorC = max_colunas;
+          menorC -= 1;
+          for (iC = 0; iC < DC; iC++) {
+            if (iK < valores.length) dim = valores[iK++]; else dim = "";
+						if (valores.length == 1) dim = valores[0];
+            valor = dim;
+            //t += CaixaEspacoMemoriaCell("memo_celula_sem_caixa", "bit_caixa_sem_caixa", "bit_caixa", "bit", 0, dim, dimI, dimF, valor, valorO);
+            t += CaixaEspacoMemoriaCell(alinhamento,"memo_celula_sem_caixa", "bit_caixa", "bits", "bit", 0, dim, dimI, dimF, valor, valorO);
+			if ((iC == menorC - 1) && (max_colunas < DC)) {
+              iC = DC - 2;
+              //t += "  <div class='memo_coordenada'> </div>";
+              t += "  <div class='memo_celula3pontos'>..</div>";
+            }
+          }
+          t += "</div>";
+          if ((iL == menor - 1) && (max_linhas < DL)) {
+            iL = DL - 2;
+            t += "  <div class='memo_coordenada'> </div>";
+            t += "  <div class='memo_celula3pontos'>..</div>";
+          }
+        }
+        t += "</div>";
+
+      } else if ((DL > 0) && (DC > 0) && (DA > 0)) {
+        t += "[<font color='red'>" + DL + "</font>]" + "[<font color='blue'>" + DC + "</font>]" + "[<font color='brown'>" + DA + "</font>]";
+        if ((Li != "") || (Ls != "")) t += " (";
+        if (Li != "") t += Li;
+        if ((Li != "") && (Ls != "")) t += ", ";
+        if (Ls != "") t += Ls;
+        if ((Li != "") || (Ls != "")) t += ")";
+        t += "</p>";
+
+
+        if (DA < max_altura) menorA = DA; else menorA = max_altura;
+        menorA -= 1;
+        var iK = 0;
+        for (iA = 0; iA < DA; iA++) {
+          t += "<div class='memo_matriz'>";
+          t += "<div class='memo_coordenada10'>";
+          t += "<font color='brown'>" + (iA + 1) + "</font>";
+          t += "</div>";
+
+
+
+
+          var menor;
+          if (DL < max_linhas) menor = DL; else menor = max_linhas;
+          menor -= 1;
+          t += "<div class='memo_matriz90'>";
+
+
+
+
+          // endereço colunas				
+          if (DC < max_colunas) menorC = DC; else menorC = max_colunas;
+          menorC -= 1;
+          //	t += "<div class='memo_matriz'>";
+          t += "<div class='memo_celula100'>";
+          t += "  <div class='memo_coordenada'> </div>";
+          var iC;
+					if (tipo == "Real") FF = 1; else FF = 0;
+          for (iC = 0; iC < DC; iC++) {
+            valor = String(iC + 1);
+            dim = valor;
+			valorO = valor;
+            t += CaixaEspacoMemoriaCell(alinhamento,"memo_celula_sem_caixa", "bit_caixa_sem_caixa", "bits_sem_caixa", "bit_sem_caixa", 0, dim, (dimI+dimF+FF),0, valor, valorO);
+            if ((iC == menorC - 1) && (max_colunas < DC)) {
+              iC = DC - 2;
+              t += "  <div class='memo_celula3pontos'>..</div>";
+            }
+          }
+          //	t += "</div>"
+          t += "</div>"
+          // endereço colunas:end	
+
+
+
+
+          //t += "<div class='memo_matriz'>";
+          for (iL = 0; iL < DL; iL++) {
+            t += "<div class='memo_celula100'>";
+            t += "  <div class='memo_coordenada'>";
+            t += (iL + 1);
+            t += "  </div>";
+
+            if (DC < max_colunas) menorC = DC; else menorC = max_colunas;
+            menorC -= 1;
+            for (iC = 0; iC < DC; iC++) {
+              if (iK < valores.length) dim = valores[iK++]; else dim = "";
+							if (valores.length == 1) dim = valores[0];
+              valor = dim;
+              t += CaixaEspacoMemoriaCell(alinhamento,"memo_celula_sem_caixa", "bit_caixa", "bits", "bit", 0, dim, dimI, dimF, valor, valorO);
+              if ((iC == menorC - 1) && (max_colunas < DC)) {
+                iC = DC - 2;
+                //t += "  <div class='memo_coordenada'> </div>";
+                t += "  <div class='memo_celula3pontos'>..</div>";
+              }
+            }
+            t += "</div>";
+            if ((iL == menor - 1) && (max_linhas < DL)) {
+              iL = DL - 2;
+              t += "  <div class='memo_coordenada'> </div>";
+              t += "  <div class='memo_celula3pontos'>..</div>";
+            }
+          }
+          t += "</div>";
+          t += "</div>";
+          if ((iA == menorA - 1) && (max_altura < DA)) {
+            iA = DA - 2;
+
+            t += "<div class='memo_matriz'>";
+            t += "    <div class='memo_celula3pontos'>..</div>";
+            t += "</div>";
+
+
+          }
+        }
+      }
+      // t += "</div>";
+      t += "</div>";
+      return t;
+    }
+
+    function Gerar(aa) {
+
+
+      if (!(gerarOnKeyUp.checked) && (aa == 1)) return;
+
+
+      var algoritmo = document.getElementById("Algoritmo");
+
+      var max_linhas = tx_max_linhas.value;
+      var max_colunas = tx_max_colunas.value;
+      var max_altura = tx_max_altura.value;
+
+
+      texto = TextoNivel(1, "<div class='doc'>");
+      textoVBA = TextoNivel(1, "<div class='doc'>");
+      textoLPC = TextoNivel(1, "<div class='doc'>");
+      if (aa == 0) {
+        NA = "___________________________";
+        OA = "_______ _______ _______ _______ _______ _______ _______ _______";
+        OA += OA;
+        DD = "____/____/_______";
+        AU = "Nº________ nome __________ __________";
+        VV = "____________________";
+        OBB = "_______ _______ _______ _______ _______ _______ _______ _______  ";
+      } else {
+        NA = nome_algoritmo.value;
+        OA = objetivo_algoritmo.value;
+        DD = data.value;
+        AU = autor.value;
+        VV = versao.value;
+        OBB = obs.value;
+      }
+      texto += TextoNivel(0, "<b>Algoritmo:</b> " + NA);
+      //texto += TextoNivel(0, "<b>Objetivo:</b> " + "<pre>" + OA + "</pre>");
+      texto += "<p class='n0'><b>Objetivo:</b></p> " + "<p class='n0'><pre>" + OA + "</pre></p>";
+
+      textoVBA += TextoNivel(0, "<b>' Sub-rotina:</b> " + NA);
+      textoVBA += "<p class='n0'><b>' Objetivo:</b></p> " + "<p class='n0'><pre>' " + OA + "</pre></p>";
+
+      textoLPC += TextoNivel(0, "/*");
+      textoLPC += TextoNivel(0, "<b>Programa:</b> " + NA);
+      textoLPC += "<p class='n0'><b>Objetivo:</b></p> " + "<p class='n0'><pre>" + OA + "</pre></p>";
+
+      TextoEspacoMemoria = "";
+      TabelaEspacoMemoriaVBALogico.length = 0;
+			
+			TracagemVetorLinhas.length = 0
+			TracagemVetorColunas.length = 0
+
+      var L = document.getElementById('TConstantes').rows.length; //.rows[0].cells[0].childNodes.item(0);
+      TextoEspacoMemoria += "<h1>Espaço de memória</h1>";
+      if (L > 1) {
+        texto += TextoNivel(0, "<b>Constantes:</b>");
+        textoVBA += TextoNivel(0, "<b>' Constantes:</b>");
+        textoLPC += TextoNivel(0, "<b>Constantes:</b>");
+        // TextoEspacoMemoria TextoEspacoMemoria
+
+        TextoEspacoMemoria += "<h2>Constantes</h2>";
+      }
+      var decVarVBA = new Array();
+      var NdecVarVBA = 0;
+      var decVarLPC = new Array();
+      var NdecVarLPC = 0;
+
+      var C = document.getElementById('TConstantes').rows[0].cells.length;
+      for (i = 1; i < L; i++) {
+        tt = ""; ttVBA = ""; ttLPC = "";
+        // nome
+        var nome = document.getElementById('TConstantes').rows[i].cells[0].childNodes.item(0).value;
+        // tipo
+        var tipo = document.getElementById('TConstantes').rows[i].cells[1].childNodes.item(0);
+        tipo = tipo.options[tipo.selectedIndex].text;
+        // tamanho
+        var tamanho = document.getElementById('TConstantes').rows[i].cells[2].childNodes.item(0).value;
+        // dim linhas
+        var dim_linhas = document.getElementById('TConstantes').rows[i].cells[3].childNodes.item(0).value;
+        // dim_colunas
+        var dim_colunas = document.getElementById('TConstantes').rows[i].cells[4].childNodes.item(0).value;
+        // dim_altura
+        var dim_altura = document.getElementById('TConstantes').rows[i].cells[5].childNodes.item(0).value;
+        //desc
+        var desc = document.getElementById('TConstantes').rows[i].cells[6].childNodes.item(0).value;
+        // uni
+        var uni = document.getElementById('TConstantes').rows[i].cells[7].childNodes.item(0).value;
+        //valor
+        var valor = document.getElementById('TConstantes').rows[i].cells[8].childNodes.item(0).value;
+
+        var DL = dim_linhas;
+        var DC = dim_colunas;
+        var DA = dim_altura;
+
+
+        tt += nome;
+        if ((dim_linhas != "") && (dim_linhas != "0")) tt += " [" + dim_linhas + "]";
+        if ((dim_colunas != "") && (dim_colunas != "0")) tt += "[" + dim_colunas + "]";
+        if ((dim_altura != "") && (dim_altura != "0")) tt += "[" + dim_altura + "]";
+        tt += " (" + tipo;
+        tt += " T" + tamanho + ")";
+        tt += " - " + desc;
+        if (uni != "") tt += " (" + uni + ")";
+        if (valor != "") tt += " (Valor: " + valor + ")";
+
+        // TextoEspacoMemoria TextoEspacoMemoria
+        Li = "";
+        Ls = ""
+				
+				TracagemVetorColunas.push(nome + "(" + valor + ")");
+
+
+        // VBA 	
+        ttVBA += "' " + nome;
+        if ((dim_linhas != "") && (dim_linhas != "0")) {
+          ttVBA += " (" + dim_linhas + ")";
+
+        }
+        if ((dim_colunas != "") && (dim_colunas != "0")) {
+          ttVBA += "(" + dim_colunas + ")";
+
+        }
+        if ((dim_altura != "") && (dim_altura != "0")) {
+          ttVBA += "(" + dim_altura + ")";
+
+        }
+
+        var TypeVBA = TypeFromAlgorithmToVBA(tipo, tamanho, valor);
+        var TT = TypeType;
+
+        TextoEspacoMemoria += CaixaEspacoMemoria(nome, desc, tipo, tamanho, valor, Li, Ls, dim_linhas, dim_colunas, dim_altura, max_linhas, max_colunas, max_altura);
+        var linha = new LinhaEspacoMemoria("Constante", nome, TypeVBA, tamanho, parseInt(dim_linhas), parseInt(dim_colunas), parseInt(dim_altura), desc, uni, Li, Ls, valor);
+        TabelaEspacoMemoriaVBALogico.push(linha);
+
+        /* V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V */
+        ttVBA += " (" + TypeVBA + ")";
+        if ((DL == 0) && (DC == 0) && (DA == 0)) {
+          decVarVBA[NdecVarVBA++] = "Const " + nome + " As " + TypeVBA + " = " + valor;
+        } if ((DL >= 0) && (DC == 0) && (DA == 0)) {
+          // DL inicializacoes
+
+          decVarVBA[NdecVarVBA++] = "Const " + nome + " (" + DL + ")" + " As " + TypeVBA;
+          var k;
+          valores = valor.split(",");
+          for (k = 0; k < DL; k++) {
+            decVarVBA[NdecVarVBA++] = "Const " + nome + " (" + k + ")" + " = " + valores[k];
+						if (k== max_linhas) {
+						  decVarVBA[NdecVarVBA++] = "..."; 
+						  k = DL-2;
+						}
+          }
+        }
+
+
+        ttVBA += " - " + desc;
+        if (uni != "") ttVBA += " (" + uni + ")";
+        if (valor != "") ttVBA += " (Valor: " + valor + ")";
+
+
+        // C
+        Ca = "/* "; Cf = " */";
+        ttLPC += nome;
+        if ((dim_linhas != "") && (dim_linhas != "0")) {
+          ttLPC += " [" + dim_linhas + "]";
+          //	decVarLPC[NdecVarLPC++] = "int iL;";
+        }
+        if ((dim_colunas != "") && (dim_colunas != "0")) {
+          ttLPC += "[" + dim_colunas + "]";
+          //	decVarLPC[NdecVarLPC++] = "int iC;";
+        }
+        if ((dim_altura != "") && (dim_altura != "0")) {
+          ttLPC += "[" + dim_altura + "]";
+          //	decVarLPC[NdecVarLPC++] = "int iA;";
+        }
+
+
+        var TypeLPC = TypeFromAlgorithmToLPC(tipo, tamanho);
+        var TT = TypeType;
+
+
+
+        /* V V V V V V V V V V V V V C C C C C V V V V V V V V V V V V V V V V V V */
+        if (TypeLPC == "char") {
+          //decVarLPC[NdecVarLPC++] = "const " + TypeLPC + " " + nome + "[" + TT + "] = " + valor + ";";
+          decVarLPC[NdecVarLPC++] = "const " + TypeLPC + " *" + nome + " = " + valor + ";";
+          ttLPC += " (" + TypeLPC + "[" + TT + "]" + ")";
+        } else {
+          ttLPC += " (" + TypeLPC + ")";
+          decVarLPC[NdecVarLPC++] = "const " + TypeLPC + " " + nome + " = " + valor + ";";
+        }
+
+        ttLPC += " - " + desc;
+        if (uni != "") ttLPC += " (" + uni + ")";
+        if (valor != "") ttLPC += " (Valor: " + valor + ")";
+
+        texto += TextoNivel(1, tt);
+        textoVBA += TextoNivel(1, ttVBA);
+        textoLPC += TextoNivel(1, ttLPC);
+      }
+
+      texto += TextoNivel(0, "<b>Variáveis</b>");
+      textoVBA += TextoNivel(0, "<b>' Variáveis</b>");
+      textoLPC += TextoNivel(0, "<b>Variáveis</b>");
+
+      /* ------------------------------------------ */
+      /* ------------------------------------------ */
+      /* ------------------------------------------ */
+      var tvars = new Array("TVariaveisEntrada", "TVariaveisAuxiliares", "TVariaveisSaida");
+      var tvars_ = new Array("Variáveis de entrada", "Variáveis auxiliares", "Variáveis de saída");
+      for (j = 0; j < tvars.length; j++) {
+        var L = document.getElementById(tvars[j]).rows.length; //.rows[0].cells[0].childNodes.item(0);
+        var tipoVariavel = "";
+        if (L > 1) {
+          if (j == 0) {
+            texto += TextoNivel(1, "<b>Entrada:</b>");
+            textoVBA += TextoNivel(1, "<b>' Entrada:</b>");
+            textoLPC += TextoNivel(1, "<b>Entrada:</b>");
+            tipoVariavel = "Entrada";
+          } else if (j == 1) {
+            texto += TextoNivel(1, "<b>Auxiliares:</b>");
+            textoVBA += TextoNivel(1, "<b>' Auxiliares:</b>");
+            textoLPC += TextoNivel(1, "<b>Auxiliares:</b>");
+            tipoVariavel = "Auxiliar";
+          }
+          else {
+            TextoEspacoMemoria += "<h2>Processamento</h2>";
+            //TextoEspacoMemoria += "<div class='proc'><pre>" + proc.value + "</pre></div>";
+            TextoEspacoMemoria += "<pre>" + proc.value + "</pre>";
+
+            texto += TextoNivel(1, "<b>Saída:</b>");
+            textoVBA += TextoNivel(1, "<b>' Saída:</b>");
+            textoLPC += TextoNivel(1, "<b>Saída:</b>");
+            tipoVariavel = "Saida";
+          }
+          // TextoEspacoMemoria TextoEspacoMemoria
+
+
+          TextoEspacoMemoria += "<h2>" + tvars_[j] + "</h2>";
+        }
+
+        for (i = 1; i < L; i++) {
+          tt = ""; ttVBA = ""; ttLPC = "";
+          // nome
+          var nome = document.getElementById(tvars[j]).rows[i].cells[0].childNodes.item(0).value;
+          // tipo
+          var tipo = document.getElementById(tvars[j]).rows[i].cells[1].childNodes.item(0);
+          tipo = tipo.options[tipo.selectedIndex].text;
+          // tamanho
+          var tamanho = document.getElementById(tvars[j]).rows[i].cells[2].childNodes.item(0).value;
+          // dim linhas
+          var dim_linhas = document.getElementById(tvars[j]).rows[i].cells[3].childNodes.item(0).value;
+          // dim_colunas
+          var dim_colunas = document.getElementById(tvars[j]).rows[i].cells[4].childNodes.item(0).value;
+          // dim_altura
+          var dim_altura = document.getElementById(tvars[j]).rows[i].cells[5].childNodes.item(0).value;
+          //desc
+          var desc = document.getElementById(tvars[j]).rows[i].cells[6].childNodes.item(0).value;
+          // uni
+          var uni = document.getElementById(tvars[j]).rows[i].cells[7].childNodes.item(0).value;
+          // limite_inferior
+          var limite_inferior = document.getElementById(tvars[j]).rows[i].cells[8].childNodes.item(0).value;
+          // limite_superior
+          var limite_superior = document.getElementById(tvars[j]).rows[i].cells[9].childNodes.item(0).value;
+          //valor
+          var valor = document.getElementById(tvars[j]).rows[i].cells[10].childNodes.item(0).value;
+
+
+				
+					
+          // Algo
+          tt += nome;
+          if ((dim_linhas != "") && (dim_linhas != "0")) {
+            tt += " [" + dim_linhas + "]";
+          }
+          if ((dim_colunas != "") && (dim_colunas != "0")) {
+            tt += "[" + dim_colunas + "]";
+          }
+          if ((dim_altura != "") && (dim_altura != "0")) {
+            tt += "[" + dim_altura + "]";
+          }
+					TracagemVetorColunas.push(tt);	
+					
+          tt += " (" + tipo;
+          tt += " T" + tamanho + ")";
+          tt += " - " + desc;
+          if (uni != "") tt += " (" + uni + ")";
+          //if (valor != "") tt += " (Valor: " + valor + ")";
+          LI = limite_inferior;
+          LS = limite_superior;
+          //Limite superior
+          if ((LI != "") || (LS != "")) tt += " (";
+          if (LI != "") {
+            tt += LI;
+            if (LS != "")
+              tt += ", ";
+          }
+          if (LS != "") tt += LS;
+          if ((LS != "") || (LI != "")) tt += ")";
+					
+					
+
+          // VBA 	
+          ttVBA += "' " + nome;
+          ttVBA_index = "";
+          flag = 0;
+          if ((dim_linhas != "") && (dim_linhas != "0")) {
+            ttVBA += " (" + dim_linhas + ")";
+            ttVBA_index += " (" + dim_linhas;
+            flag = 1;
+            decVarVBA[NdecVarVBA++] = "Dim iL As Integer";
+          }
+          if ((dim_colunas != "") && (dim_colunas != "0")) {
+            ttVBA += "(" + dim_colunas + ")";
+            ttVBA_index += ", " + dim_colunas;
+            flag = 1;
+            decVarVBA[NdecVarVBA++] = "Dim iC As Integer";
+          }
+          if ((dim_altura != "") && (dim_altura != "0")) {
+            ttVBA += "(" + dim_altura + ")";
+            ttVBA_index += ", " + dim_altura;
+            flag = 1;
+            decVarVBA[NdecVarVBA++] = "Dim iA As Integer";
+          }
+          if (flag == 1) ttVBA_index += ")";
+
+          var TypeVBA = TypeFromAlgorithmToVBA(tipo, tamanho, valor);
+          var TT = TypeType;
+          ttVBA += " (" + TypeVBA + ")";
+
+          decVarVBA[NdecVarVBA++] = "Dim " + nome + ttVBA_index + " As " + TypeVBA;
+
+
+          // TextoEspacoMemoria TextoEspacoMemoria
+          TextoEspacoMemoria += CaixaEspacoMemoria(nome, desc, tipo, tamanho, valor, limite_inferior, limite_superior, dim_linhas, dim_colunas, dim_altura, max_linhas, max_colunas, max_altura);
+          //alert(tipoVariavel);
+          var linha = new LinhaEspacoMemoria(tipoVariavel, nome, TypeVBA, tamanho, parseInt(dim_linhas), parseInt(dim_colunas), parseInt(dim_altura), desc, Uni, Li, Ls, valor);
+          TabelaEspacoMemoriaVBALogico.push(linha);
+
+
+          ttVBA += " - " + desc;
+          if (uni != "") ttVBA += " (" + uni + ")";
+          //if (valor != "") ttVBA += " (Valor: " + valor + ")";
+          LI = limite_inferior;
+          LS = limite_superior;
+          //Limite superior
+          if ((LI != "") || (LS != "")) ttVBA += " (";
+          if (LI != "") {
+            ttVBA += LI;
+            if (LS != "")
+              ttVBA += ", ";
+          }
+          if (LS != "") ttVBA += LS;
+          if ((LS != "") || (LI != "")) ttVBA += ")";
+
+          // C
+          ttLPC += nome;
+          ttLPC_ = "";
+          if ((dim_linhas != "") && (dim_linhas != "0")) {
+            ttLPC_ += " [" + dim_linhas + "]";
+            decVarLPC[NdecVarLPC++] = "int iL;";
+          }
+          if ((dim_colunas != "") && (dim_colunas != "0")) {
+            ttLPC_ += "[" + dim_colunas + "]";
+            decVarLPC[NdecVarLPC++] = "int iC;";
+          }
+          if ((dim_altura != "") && (dim_altura != "0")) {
+            ttLPC_ += "[" + dim_altura + "]";
+            decVarLPC[NdecVarLPC++] = "int iA;";
+          }
+          ttLPC += ttLPC_;
+
+          var TypeLPC = TypeFromAlgorithmToLPC(tipo, tamanho);
+
+          if (TypeLPC == "char") {
+            decVarLPC[NdecVarLPC++] = TypeLPC + " " + nome + ttLPC_ + "[" + tamanho + 1 + "];";
+            ttLPC += " (" + TypeLPC + "[" + tamanho + 1 + "]" + ")";
+          } else {
+            ttLPC += " (" + TypeLPC + ")";
+            decVarLPC[NdecVarLPC++] = TypeLPC + " " + nome + ttLPC_ + ";";
+          }
+
+
+
+
+          ttLPC += " - " + desc;
+          if (uni != "") ttLPC += " (" + uni + ")";
+          //if (valor != "") ttLPC += " (Valor: " + valor + ")";
+          LI = limite_inferior;
+          LS = limite_superior;
+          //Limite superior
+          if ((LI != "") || (LS != "")) ttLPC += " (";
+          if (LI != "") {
+            ttLPC += LI;
+            if (LS != "")
+              ttLPC += ", ";
+          }
+          if (LS != "") ttLPC += LS;
+          if ((LS != "") || (LI != "")) ttLPC += ")";
+
+
+          texto += TextoNivel(2, tt);
+          textoVBA += TextoNivel(2, ttVBA);
+          textoLPC += TextoNivel(2, ttLPC);
+        }
+      }
+
+
+
+
+      /*	var x = xmlDoc.getElementsByTagName("TVariaveisEntrada");
+      for (i=0; i<x.length ; i++)  { 
+      texto += x[i].getElementsByTagName("nome")[0].childNodes[0].nodeValue);
+      } */
+
+
+      texto += TextoNivel(0, "<b>Data:</b> " + DD);
+      texto += TextoNivel(0, "<b>Autor:</b> " + AU);
+      texto += TextoNivel(0, "<b>Versão:</b> " + VV);
+      texto += TextoNivel(0, "<b>Obs:</b> " + OBB);
+      texto += TextoNivel(1, "</div>");
+      texto += TextoNivel(1, "<div class='corpo'>");
+      texto += TextoNivel(0, "<b>Início:</b>");
+			TracagemVetorLinhas.push("<b>Início:</b>");
+
+      textoVBA += TextoNivel(0, "<b>' Data:</b> " + DD);
+      textoVBA += TextoNivel(0, "<b>' Autor:</b> " + AU);
+      textoVBA += TextoNivel(0, "<b>' Versão:</b> " + VV);
+      textoVBA += TextoNivel(0, "<b>' Obs:</b> " + OBB);
+      textoVBA += TextoNivel(1, "</div>");
+      textoVBA += TextoNivel(1, "<div class='corpo'>");
+      textoVBA += TextoNivel(0, "<b>Sub</b> " + NA + "_Click()");
+      // declaração de variáveis	
+      for (i = 0; i < NdecVarVBA; i++)
+        textoVBA += TextoNivel(1, decVarVBA[i]);
+
+
+      textoLPC += TextoNivel(0, "<b>Data:</b> " + DD);
+      textoLPC += TextoNivel(0, "<b>Autor:</b> " + AU);
+      textoLPC += TextoNivel(0, "<b>Versão:</b> " + VV);
+      textoLPC += TextoNivel(0, "<b>Obs:</b> " + OBB);
+      textoLPC += TextoNivel(0, "*/");
+      textoLPC += TextoNivel(1, "</div>");
+      textoLPC += TextoNivel(1, "<div class='corpo'>");
+      textoLPC += TextoNivel(0, "#include &lt;stdio.h&gt;");
+      textoLPC += TextoNivel(0, "<b>main() {</b> ");
+      // declaração de variáveis	
+      for (i = 0; i < NdecVarLPC; i++)
+        textoLPC += TextoNivel(1, decVarLPC[i]);
+
+      /* ######################################################################## */
+      /* TVariaveisEntrada TVariaveisEntrada TVariaveisEntrada TVariaveisEntrada*/
+      /* TVariaveisEntrada TVariaveisEntrada TVariaveisEntrada TVariaveisEntrada*/
+      /* TVariaveisEntrada TVariaveisEntrada TVariaveisEntrada TVariaveisEntrada*/
+      /* ######################################################################## */
+      var L = document.getElementById('TVariaveisEntrada').rows.length;
+      if (L > 1) {
+        texto += TextoNivel(1, "<div class='entrada'>");
+        texto += TextoNivel(1, "/* Entrada de dados (INPUT) */");
+
+        textoVBA += TextoNivel(1, "<div class='entrada'>");
+        textoVBA += TextoNivel(1, "' Entrada de dados (INPUT)");
+
+        textoLPC += TextoNivel(1, "<div class='entrada'>");
+        textoLPC += TextoNivel(1, "/* Entrada de dados (INPUT) */");
+      }
+			var iAc=0;
+			var iLc=0;
+			var iCc=0;
+			
+      for (i = 1; i < L; i++) {
+        var V = document.getElementById('TVariaveisEntrada').rows[i].cells[0].childNodes.item(0).value;
+        // tipo	
+        var tipo = document.getElementById('TVariaveisEntrada').rows[i].cells[1].childNodes.item(0);
+        tipo = tipo.options[tipo.selectedIndex].text;
+
+        var TA = document.getElementById('TVariaveisEntrada').rows[i].cells[2].childNodes.item(0).value;
+        var DL = document.getElementById('TVariaveisEntrada').rows[i].cells[3].childNodes.item(0).value;
+        var DC = document.getElementById('TVariaveisEntrada').rows[i].cells[4].childNodes.item(0).value;
+        var DA = document.getElementById('TVariaveisEntrada').rows[i].cells[5].childNodes.item(0).value;
+
+        var Desc = document.getElementById('TVariaveisEntrada').rows[i].cells[6].childNodes.item(0).value;
+        var Uni = document.getElementById('TVariaveisEntrada').rows[i].cells[7].childNodes.item(0).value;
+
+        var Li = document.getElementById('TVariaveisEntrada').rows[i].cells[8].childNodes.item(0).value;
+        var Ls = document.getElementById('TVariaveisEntrada').rows[i].cells[9].childNodes.item(0).value;
+
+        var tt = "";
+
+        IndiceL = "";
+        IndiceC = "";
+        IndiceA = "";
+        UniO = Uni;
+        a = 0;
+        if ((DL != "") && (DL != "0")) {  // DimLinhas
+          _ta = TextoNivel(1, "PARA iL=1 ATÉ " + DL + " FAZER");
+					texto += _ta;
+					TracagemVetorLinhas.push(_ta);
+					if (iLc++ == 0) TracagemVetorColunas.push("iL");	
+          IndiceL = "[iL]";
+          a += 1;
+        }
+        if ((DC != "") && (DC != "0")) {  // DimColunas
+          _ta = TextoNivel(1 + a, "PARA iC=1 ATÉ " + DC + " FAZER");
+					texto += _ta;
+					TracagemVetorLinhas.push(_ta);
+					if (iCc++ == 0) TracagemVetorColunas.push("iC");	
+          IndiceC = "[iC]";
+          a += 1;
+        }
+        if ((DA != "") && (DA != "0")) {     // DimAltura
+          _ta = TextoNivel(1 + a, "PARA iA=1 ATÉ " + DA + " FAZER");
+				  texto += _ta;
+					TracagemVetorLinhas.push(_ta);
+					if (iAc++ == 0) TracagemVetorColunas.push("iA");	
+          IndiceA = "[iA]";
+          a += 1;
+        }
+        // Entrada + validação
+        var sp = 1 + a;
+        if ((Li != "") || (Ls != "")) {
+          _ta = TextoNivel(1 + a, "FAZER");
+				  texto += _ta;
+					TracagemVetorLinhas.push(_ta);
+          sp = 2 + a;
+        }
+        if ((IndiceL == "") && (IndiceC == "") && (IndiceA == "")) {
+          if (Uni != "")
+            Uni = " (" + Uni + ')?"'
+          else
+            Uni = '?"';
+					_ta = 	TextoNivel(sp, 'ESCREVER "' + Desc + Uni);
+          texto += _ta;
+					TracagemVetorLinhas.push(_ta);
+        } else {
+          if (Uni != "")
+            Uni = ', " ' + Uni + ' ?"'
+          else
+            Uni = ', " ?"';
+          TL = ""; TC = ""; TA = "";
+          //Desc += ' "';
+          if (IndiceL != "")
+            TL = ", " + '"[", ' + "iL, " + '"]"';
+          if (IndiceC != "")
+            TC = ", " + '"[", ' + "iC, " + '"]"';
+          if (IndiceA != "")
+            TA = ", " + '"[", ' + "iA, " + '"]"';
+
+          _ta = TextoNivel(sp, 'ESCREVER "' + Desc + ' "' + TL + TC + TA + Uni);
+          texto += _ta;
+					TracagemVetorLinhas.push(_ta);
+        }
+        _ta = TextoNivel(sp, "LER " + V + IndiceL + IndiceC + IndiceA);
+        texto += _ta;
+				TracagemVetorLinhas.push(_ta);
+
+        condicao = "";
+        V2 = V + IndiceL + IndiceC + IndiceA;
+        if ((Li != "") && (Ls != ""))
+          condicao = "( (" + V2 + " " + Li + ") E (" + V2 + " " + Ls + ") )";
+        else if (((Li == "") && (Ls != "")))
+          condicao = "(" + V2 + " " + Ls + ")";
+        else if (((Li != "") && (Ls == "")))
+          condicao = "(" + V2 + " " + Li + ")";
+
+				_t = condicao.replace(/\( \(/g, "((").replace(/\) \)/g, "))");		
+				TracagemVetorColunas.push(_t);	
+					
+        if ((Li != "") || (Ls != "")) {
+          _ta = TextoNivel(1 + a, "ATÉ " + condicao);
+          texto += _ta;
+  				TracagemVetorLinhas.push(_ta);
+				}
+        
+				/*_ta = TextoNivel(2 + a, tt);
+        texto += _ta;
+				TracagemVetorLinhas.push(_ta);*/
+
+        // END: Entrada + validação
+
+        if ((DA != "") && (DA != "0")) {     // DimAltura
+          _ta = TextoNivel(3, "FIMPARA  /* iA */");
+					texto += _ta;
+					TracagemVetorLinhas.push(_ta);
+        }
+        if ((DC != "") && (DC != "0")) {  // DimColunas
+          _ta = TextoNivel(2, "FIMPARA  /* iC */");
+					texto += _ta;
+					TracagemVetorLinhas.push(_ta);
+        }
+        if ((DL != "") && (DL != "0")) {  // DimLinhas
+          _ta = TextoNivel(1, "FIMPARA  /* iL */");
+					texto += _ta;
+					TracagemVetorLinhas.push(_ta);
+        }
+
+        // VBA INPUT INPUT INPUT INPUT INPUT INPUTINPUTINPUTINPUTINPUTINPUTINPUT
+        // VBA VBA VBA VBA VBA VBA VBA VBA VBA VBA VBA VBA VBA VBA VBA VBA VBA VBA
+        // VBA VBA VBA VBA VBA VBA VBA VBA VBA VBA VBA VBA VBA VBA VBA VBA VBA VBA
+        IndiceL = "";
+        IndiceC = "";
+        IndiceA = "";
+        Uni = UniO;
+        a = 0;
+        if ((DL != "") && (DL != "0")) {  // DimLinhas
+          textoVBA += TextoNivel(1, "For iL=1 To " + DL + "");
+          IndiceL = "(iL)";
+          a += 1;
+        }
+        if ((DC != "") && (DC != "0")) {  // DimColunas
+          textoVBA += TextoNivel(1 + a, "For iC=1 To " + DC + "");
+          IndiceC = "(iC)";
+          a += 1;
+        }
+        if ((DA != "") && (DA != "0")) {     // DimAltura
+          textoVBA += TextoNivel(1 + a, "For iA=1 To " + DA + "");
+          IndiceA = "(iA)";
+          a += 1;
+        }
+        // Entrada + validação
+        /*		Decisão
+        ?If (condição) Then
+        ?Select (variável) Case … End Select
+        ?Repetição
+        ?For counter = start To end [Step step] Next
+        ?While (condição) … Wend
+        ?Do While (condição) … Loop
+        ?Do … Loop While (condição)
+        ?Do Until (condição) … Loop
+        ?Do … Loop Until (condição)
+        40*/
+        var sp = 1 + a;
+        if ((Li != "") || (Ls != "")) {
+          textoVBA += TextoNivel(1 + a, "Do");
+          sp = 2 + a;
+        }
+        if ((IndiceL == "") && (IndiceC == "") && (IndiceA == "")) {
+          if (Uni != "") {
+            Uni = "(" + Uni + ")?"
+            EscreverVBA = Desc + " " + Uni;
+          } else {
+            //textoVBA += TextoNivel(sp, "ESCREVER '" + Desc + Uni);
+            EscreverVBA = Desc + "?";
+          }
+        } else {
+          if (Uni != "")
+            Uni = ' & " ' + Uni + ' ?';
+          else
+            Uni = ' & " ?';
+          TL = ""; TC = ""; TA = "";
+          // Desc += ' "';
+          if (IndiceL != "")
+            TL = " & " + '"[" & ' + "iL & " + '"]"';
+          if (IndiceC != "")
+            TC = " & " + '"[" & ' + "iC & " + '"]"';
+          if (IndiceA != "")
+            TA = " & " + '"[" & ' + "iA & " + '"]"';
+
+          //textoVBA += TextoNivel(sp, "ESCREVER '" + Desc + TL + TC + TA + Uni);
+          EscreverVBA = Desc + ' "' + TL + TC + TA + Uni;
+        }
+        //textoVBA += TextoNivel(sp, "LER " + V + IndiceL + IndiceC + IndiceA);
+        LerVBA = V + IndiceL + IndiceC + IndiceA;
+
+        var TypeVBA = TypeFromAlgorithmToVBA(tipo, TA, valor);
+        var TT = TypeType;
+        textoVBA += TextoNivel(sp, LerVBA + ' = Application.InputBox(Prompt:="' + EscreverVBA + '", Type:=' + TT + ')');
+        // C = Application.InputBox(Prompt:="Comprimento (cm)?", Type:=1)
+
+        condicao = "";
+        V2 = V + IndiceL + IndiceC + IndiceA;
+        if ((Li != "") && (Ls != ""))
+          condicao = "( (" + V2 + " " + Li + ") And (" + V2 + " " + Ls + ") )";
+        else if (((Li == "") && (Ls != "")))
+          condicao = "(" + V2 + " " + Ls + ")";
+        else if (((Li != "") && (Ls == "")))
+          condicao = "(" + V2 + " " + Li + ")";
+
+        if ((Li != "") || (Ls != ""))
+          textoVBA += TextoNivel(1 + a, "Loop Until " + condicao);
+        // textoVBA += TextoNivel(2 + a, tt);
+        // END: Entrada + validação
+
+        if ((DA != "") && (DA != "0")) {     // DimAltura
+          textoVBA += TextoNivel(3, "Next ' iA");
+        }
+        if ((DC != "") && (DC != "0")) {  // DimColunas
+          textoVBA += TextoNivel(2, "Next ' iC");
+        }
+        if ((DL != "") && (DL != "0")) {  // DimLinhas
+          textoVBA += TextoNivel(1, "Next ' iL");
+        }
+
+
+
+
+        // C INPUT INPUT
+        // C
+        IndiceL = "";
+        IndiceC = "";
+        IndiceA = "";
+        Uni = UniO;
+        a = 0;
+        formatoIndice = "";
+        if ((DL != "") && (DL != "0")) {  // DimLinhas
+          textoLPC += TextoNivel(1, "for(iL = 0; iL < " + DL + "; iL++) {");
+          IndiceL = "[iL]";
+          formatoIndice += "%c%d%c";
+          a += 1;
+        }
+        if ((DC != "") && (DC != "0")) {  // DimColunas
+          textoLPC += TextoNivel(1 + a, "for(iC = 0; iC < " + DC + "; iC++) {");
+          IndiceC = "[iC]";
+          formatoIndice += "%c%d%c";
+          a += 1;
+        }
+        if ((DA != "") && (DA != "0")) {     // DimAltura
+          textoLPC += TextoNivel(1 + a, "for(iA = 1; iA < " + DA + "; iA++) {");
+          IndiceA = "[iA]";
+          formatoIndice += "%c%d%c";
+          a += 1;
+        }
+        var sp = 1 + a;
+        if ((Li != "") || (Ls != "")) {
+          textoLPC += TextoNivel(1 + a, "do {");
+          sp = 2 + a;
+        }
+
+        if ((IndiceL == "") && (IndiceC == "") && (IndiceA == "")) {
+          if (Uni != "") {
+            Uni = "(" + Uni + ")"
+            EscreverLPC = 'printf("%s %s ?"' + ", " + '"' + Desc + '"' + ", " + '"' + Uni + '"' + ");";
+          } else {
+            EscreverLPC = 'printf("%s ?"' + ', "' + Desc + '"' + ");";
+          }
+        } else {
+          if (Uni != "")
+            Uni = ', "' + Uni + " ?"
+          else
+            Uni = ', " ?"';
+          TL = ""; TC = ""; TA = "";
+          Desc += '"';
+          if (IndiceL != "")
+            TL = ", " + "'[', " + "iL, " + "']'";
+          if (IndiceC != "")
+            TC = ", " + "'[', " + "iC, " + "']'";
+          if (IndiceA != "")
+            TA = ", " + "'[', " + "iA, " + "']'";
+
+          //textoLPC += TextoNivel(sp, "ESCREVER '" + Desc + TL + TC + TA + Uni);
+          EscreverLPC = 'printf("%s' + formatoIndice + ' %s"' + ", " + '"' + Desc + TL + TC + TA + Uni + '"' + ");"; ;
+        }
+
+        //textoLPC += TextoNivel(sp, "LER " + V + IndiceL + IndiceC + IndiceA);
+        textoLPC += TextoNivel(sp, EscreverLPC);
+
+        CharType = " ";
+        var TypeLPC = TypeFromAlgorithmToLPC(tipo, TA);
+        var TT = TypeType;
+
+        //alert (tipo + CharType);
+
+        LerLPC = 'scanf("%' + CharType + '", ' + "&" + V + IndiceL + IndiceC + IndiceA + ");";
+        textoLPC += TextoNivel(sp, LerLPC);
+
+
+        condicao = "";
+        V2 = V + IndiceL + IndiceC + IndiceA;
+        if ((Li != "") && (Ls != ""))
+          condicao = "( (" + V2 + " " + Li + ") && (" + V2 + " " + Ls + ") )";
+        else if (((Li == "") && (Ls != "")))
+          condicao = "(" + V2 + " " + Ls + ")";
+        else if (((Li != "") && (Ls == "")))
+          condicao = "(" + V2 + " " + Li + ")";
+        condicao = condicao.replace("<>", "!=");
+        condicao = "(!" + condicao + ")";
+
+
+        if ((Li != "") || (Ls != ""))
+          textoLPC += TextoNivel(1 + a, "} while " + condicao);
+        // textoLPC += TextoNivel(2 + a, tt);
+        // END: Entrada + validação
+
+        if ((DA != "") && (DA != "0")) {     // DimAltura
+          textoLPC += TextoNivel(3, "} /* iA */");
+        }
+        if ((DC != "") && (DC != "0")) {  // DimColunas
+          textoLPC += TextoNivel(2, "} /* iC */");
+        }
+        if ((DL != "") && (DL != "0")) {  // DimLinhas
+          textoLPC += TextoNivel(1, "} /* iL */");
+        }
+      }
+
+
+      texto += TextoNivel(1, "</div>");
+      textoVBA += TextoNivel(1, "</div>");
+      textoLPC += TextoNivel(1, "</div>");
+
+      texto += TextoNivel(1, "<div class='proc'>");
+      textoVBA += TextoNivel(1, "<div class='proc'>");
+      textoLPC += TextoNivel(1, "<div class='proc'>");
+      texto += TextoNivel(1, "/* Processamento (PROCESSING) */");
+      textoVBA += TextoNivel(1, "' Processamento (PROCESSING)");
+      textoLPC += TextoNivel(1, "/* Processamento (PROCESSING) */");
+      if (aa == 1) {
+        texto += "<pre>" + proc.value + "</pre>"; //TextoNivel(1, proc.value);
+        textoVBA += "<pre>" + proc.value + "</pre>"; //TextoNivel(1, proc.value);
+        textoLPC += "<pre>" + proc.value + "</pre>"; //TextoNivel(1, proc.value);
+						
+				_ta = "<pre>" + proc.value + "</pre>";
+				var x = _ta.split(String.fromCharCode(13));
+				for (_i=0; _i < x.length; _i++) {
+					var r = x[_i];
+					r = r.replace(/\n/g, " ");
+					r = r.replace(/\0/g, " ");
+					r = r.replace(/\f/g, " ");
+					r = r.replace(/\r/g, " ");
+					r = r.replace(/\t/g, " ");
+					r = r.replace(/\v/g, " ");
+					
+					if (r.match(/./))
+						TracagemVetorLinhas.push(r);
+				}
+				
+      } else {
+        for (L = 0; L < NLinhasCodigo.value; L++) {
+          texto += TextoNivel(1, "__________________________________________________________");
+          textoVBA += TextoNivel(1, "__________________________________________________________");
+          textoLPC += TextoNivel(1, "__________________________________________________________");
+        }
+      }
+      texto += TextoNivel(1, "</div>");
+      textoVBA += TextoNivel(1, "</div>");
+      textoLPC += TextoNivel(1, "</div>");
+
+      var L = document.getElementById('TVariaveisSaida').rows.length;
+      if (L > 1) {
+        texto += TextoNivel(1, "<div class='saida'>");
+        texto += TextoNivel(1, "/* Saída de resultados (OUTPUT) */");
+
+        textoVBA += TextoNivel(1, "<div class='saida'>");
+        textoVBA += TextoNivel(1, "' Saída de resultados (OUTPUT) ");
+
+        textoLPC += TextoNivel(1, "<div class='saida'>");
+        textoLPC += TextoNivel(1, "/* Saída de resultados (OUTPUT) */");
+      }
+      /* ########################################################## */
+      /* TVariaveisSaida  TVariaveisSaida TVariaveisSaida TVariaveisSaida TVariaveisSaida */
+      /* TVariaveisSaida  TVariaveisSaida TVariaveisSaida TVariaveisSaida TVariaveisSaida */
+      /* TVariaveisSaida  TVariaveisSaida TVariaveisSaida TVariaveisSaida TVariaveisSaida */
+      /* TVariaveisSaida  TVariaveisSaida TVariaveisSaida TVariaveisSaida TVariaveisSaida */
+      /* ########################################################## */
+     	var iAc=0;
+			var iLc=0;
+			var iCc=0;
+
+			for (i = 1; i < L; i++) {
+        var V = document.getElementById('TVariaveisSaida').rows[i].cells[0].childNodes.item(0).value;
+
+        var TA = document.getElementById('TVariaveisSaida').rows[i].cells[2].childNodes.item(0).value;
+        var p = TA.indexOf(".");
+        var TAI = 0;
+        var TAF = 0;
+        if (p == -1)
+          TAI = parseInt(TA);
+        else {
+          a = TA.substring(p + 1);
+          b = TA.substring(p - 1);
+
+          TAI = parseInt(b);
+          TAF = parseInt(a);
+          if (TAI == "NaN") TAI = 0;
+          if (TAF == "NaN") TAF = 0;
+
+        }
+
+        var DL = document.getElementById('TVariaveisSaida').rows[i].cells[3].childNodes.item(0).value;
+        var DC = document.getElementById('TVariaveisSaida').rows[i].cells[4].childNodes.item(0).value;
+        var DA = document.getElementById('TVariaveisSaida').rows[i].cells[5].childNodes.item(0).value;
+
+        var Desc = document.getElementById('TVariaveisSaida').rows[i].cells[6].childNodes.item(0).value;
+        var Uni = document.getElementById('TVariaveisSaida').rows[i].cells[7].childNodes.item(0).value;
+
+        var Li = document.getElementById('TVariaveisSaida').rows[i].cells[8].childNodes.item(0).value;
+        var Ls = document.getElementById('TVariaveisSaida').rows[i].cells[9].childNodes.item(0).value;
+
+        IndiceL = "";
+        IndiceC = "";
+        IndiceA = "";
+        UniO = Uni;
+
+        if (((DL != "") && (DL != "0")) || ((DC != "") && (DC != "0")) || ((DA != "") && (DA != "0"))) {
+          Uni2 = "";
+          if (Uni != "") Uni2 = ', " ' + Uni + '"';
+          _ta = TextoNivel(1, 'ESCREVER "' + Desc + ':"' + Uni2);
+					texto += _ta;
+					TracagemVetorLinhas.push(_ta);
+        }
+
+        a = 1;
+        if ((DL != "") && (DL != "0")) {  // DimLinhas
+          _ta = TextoNivel(a, "PARA iL=1 ATÉ " + DL + " FAZER");
+					texto += _ta;
+					if (iLc++ == 0) TracagemVetorColunas.push("iL");
+					TracagemVetorLinhas.push(_ta);
+
+          IndiceL = "[iL]";
+          a += 1;
+        }
+        if ((DC != "") && (DC != "0")) {  // DimColunas
+          _ta = TextoNivel(a, "PARA iC=1 ATÉ " + DC + " FAZER");
+										texto += _ta;
+					TracagemVetorLinhas.push(_ta);
+										if (iCc++ == 0) TracagemVetorColunas.push("iC");
+
+          IndiceC = "[iC]";
+          a += 1;
+        }
+        if ((DA != "") && (DA != "0")) {     // DimAltura
+          _ta = TextoNivel(a, "PARA iA=1 ATÉ " + DA + " FAZER");
+										texto += _ta;
+					TracagemVetorLinhas.push(_ta);
+					if (iAc++ == 0) TracagemVetorColunas.push("iA");
+					
+          IndiceA = "[iA]";
+          a += 1;
+        }
+
+        if ((IndiceL == "") && (IndiceC == "") && (IndiceA == "")) {
+          if (Uni != "") Uni = ', " ' + Uni + '"';
+          _ta = TextoNivel(a, 'ESCREVER "' + Desc + ': ", ' + V + Uni);
+										texto += _ta;
+					TracagemVetorLinhas.push(_ta);
+        } else {
+          if (Uni != "") Uni = ', " ' + Uni + '"';
+          if ((IndiceC == "") && (IndiceA == "")) {
+            _ta = TextoNivel(a, "ESCREVER " + V + IndiceL + IndiceC + IndiceA + '    /* Muda de linha */');
+										texto += _ta;
+					TracagemVetorLinhas.push(_ta);
+         } else {
+          _ta = TextoNivel(a, "ESCREVER " + V + IndiceL + IndiceC + IndiceA + ', " "         /* Não muda de linha */');
+					texto += _ta;
+					TracagemVetorLinhas.push(_ta);
+					}	
+
+        }
+
+
+        if ((DA != "") && (DA != "0")) {     // DimAltura
+          _ta = TextoNivel(3, "FIMPARA  /* iA */");
+					texto += _ta;
+					TracagemVetorLinhas.push(_ta);
+          _ta = TextoNivel(3, "ESCREVER    /* Muda de linha */");
+					texto += _ta;
+					TracagemVetorLinhas.push(_ta);
+				}
+        if ((DC != "") && (DC != "0")) {  // DimColunas
+          _ta = TextoNivel(2, "FIMPARA  /* iC */");
+					texto += _ta;
+					TracagemVetorLinhas.push(_ta);
+          _ta = TextoNivel(2, "ESCREVER    /* Muda de linha */");
+					texto += _ta;
+					TracagemVetorLinhas.push(_ta);
+        }
+        if ((DL != "") && (DL != "0")) {  // DimLinhas
+          _ta = TextoNivel(1, "FIMPARA  /* iL */");
+					texto += _ta;
+					TracagemVetorLinhas.push(_ta);
+          //texto += TextoNivel(1, "ESCREVER    /* Muda de linha */");
+        }
+
+
+        // VBA  VBA VBA VBA VBA VBA VBA  VBA VBA VBA VBA VBAVBA  VBA VBA VBA VBA VBA
+        // OUTPUT OUTPUT OUTPUT OUTPUT OUTPUT OUTPUT OUTPUT OUTPUT OUTPUT OUTPUT OUTPU  
+        IndiceL = "";
+        IndiceC = "";
+        IndiceA = "";
+        Uni = UniO;
+
+        EscreverVBA = "";
+        if (((DL != "") && (DL != "0")) || ((DC != "") && (DC != "0")) || ((DA != "") && (DA != "0"))) {
+          Uni2 = "";
+          if (Uni != "") {
+            Uni2 = ' & "' + Uni + '"';
+            EscreverVBA = "' " + 'MsgBox("' + Desc + ': "' + Uni2 + ')';
+            textoVBA += TextoNivel(1, V + '_Aux = "' + Desc + ': "' + Uni2 + ' & Chr(13)');
+          } else {
+            EscreverVBA = "' " + 'MsgBox("' + Desc + ':")';
+            textoVBA += TextoNivel(1, V + '_Aux = "' + Desc + ': " & Chr(13)');
+          }
+          textoVBA += TextoNivel(1, EscreverVBA);
+
+        }
+
+        a = 1;
+        if ((DL != "") && (DL != "0")) {  // DimLinhas
+          textoVBA += TextoNivel(a, "For iL=1 To " + DL + "");
+          IndiceL = "(iL)";
+          a += 1;
+        }
+        if ((DC != "") && (DC != "0")) {  // DimColunas
+          textoVBA += TextoNivel(a, "For iC=1 To " + DC + "");
+          IndiceC = "(iC)";
+          a += 1;
+        }
+        if ((DA != "") && (DA != "0")) {     // DimAltura
+          textoVBA += TextoNivel(a, "For iA=1 To " + DA + "");
+          IndiceA = "(iA)";
+          a += 1;
+        }
+
+        if ((IndiceL == "") && (IndiceC == "") && (IndiceA == "")) {
+          //textoVBA += TextoNivel(a, "ESCREVER '" + Desc + ":', " + V + Uni);
+          if (Uni != "")
+            EscreverVBA = 'MsgBox("' + Desc + ': " & ' + V + " & " + '" ' + Uni + '")';
+          else
+            EscreverVBA = 'MsgBox("' + Desc + ': " & ' + V + ')';
+          textoVBA += TextoNivel(a, EscreverVBA);
+        } else {
+          //textoVBA += TextoNivel(a, "ESCREVER " + V + IndiceL + IndiceC + IndiceA);
+          EscreverVBA = "' " + 'MsgBox(' + V + IndiceL + IndiceC + IndiceA + ')';
+          textoVBA += TextoNivel(a, EscreverVBA);
+          // alert(TAF);
+          taf = 0;
+          if (TAF > 0) {
+            formatoReal = ".";
+            taf = taf + 1;
+            for (r = 0; r < TAF; r++)
+              formatoReal += "0";
+            formatoReal += '"';
+          } else
+            formatoReal = '"';
+          textoVBA += TextoNivel(a, V + '_Aux = ' + V + '_Aux & ' + 'Format(Format(' + V + IndiceL + IndiceC + IndiceA + ', "0' + formatoReal + '), String(' + (parseInt(TAI) + taf) + ', "@"))');
+
+
+        }
+
+
+        if ((DA != "") && (DA != "0")) {     // DimAltura
+          textoVBA += TextoNivel(3, "Next  ' iA ");
+          //textoVBA += TextoNivel(3, "ESCREVER    /* Muda de linha */");
+          textoVBA += TextoNivel(3, V + '_Aux = ' + V + '_Aux & Chr(13)');
+        }
+        if ((DC != "") && (DC != "0")) {  // DimColunas
+          textoVBA += TextoNivel(2, "Next  ' iC");
+          textoVBA += TextoNivel(2, V + '_Aux = ' + V + '_Aux & Chr(13)');
+          //  textoVBA += TextoNivel(2, "ESCREVER    /* Muda de linha */");
+        }
+        if ((DL != "") && (DL != "0")) {  // DimLinhas
+          textoVBA += TextoNivel(1, "Next  ' iL");
+          //textoVBA += TextoNivel(1, "ESCREVER    /* Muda de linha */");
+        }
+        textoVBA += TextoNivel(1, 'MsgBox(' + V + '_Aux)');
+
+        // C C C C C C C C C C C C C C C C C C C C C C C C C C C C C C C C C C C C C
+        // OUTPUT OUTPUT OUTPUT OUTPUT OUTPUT OUTPUT OUTPUT OUTPUT OUTPUT OUTPUT OUTPU  
+        IndiceL = "";
+        IndiceC = "";
+        IndiceA = "";
+        Uni = UniO;
+
+        EscreverLPC = "";
+        if (((DL != "") && (DL != "0")) || ((DC != "") && (DC != "0")) || ((DA != "") && (DA != "0"))) {
+          if (Uni != "") {
+            Uni = " (" + Uni + ")?"
+            EscreverLPC = 'printf("%s %s\\n"' + ", " + '"' + Desc + '"' + ", " + '"' + Uni + '"' + ");";
+          } else {
+            EscreverLPC = 'printf("%s\\n"' + ', "' + Desc + '"' + ");";
+          }
+          textoLPC += TextoNivel(1, EscreverLPC);
+        }
+
+
+        a = 1;
+        formatoIndice = "";
+        if ((DL != "") && (DL != "0")) {  // DimLinhas
+          textoLPC += TextoNivel(a, "for(iL = 0; iL < " + DL + "; iL++) {");
+          IndiceL = "[iL]";
+          formatoIndice += "%c%d%c";
+          a += 1;
+        }
+        if ((DC != "") && (DC != "0")) {  // DimColunas
+          textoLPC += TextoNivel(a, "for(iC = 0; iC < " + DC + "; iC++) {");
+          IndiceC = "[iC]";
+          formatoIndice += "%c%d%c";
+          a += 1;
+        }
+        if ((DA != "") && (DA != "0")) {     // DimAltura
+          textoLPC += TextoNivel(a, "for(iA = 0; iA < " + DA + "; iA++) {");
+          IndiceA = "[iA]";
+          formatoIndice += "%c%d%c";
+          a += 1;
+        }
+
+        CharType = " ";
+        var TypeLPC = TypeFromAlgorithmToLPC(tipo, TA);
+        var TT = TypeType;
+
+
+        if ((IndiceL == "") && (IndiceC == "") && (IndiceA == "")) {
+          //textoLPC += TextoNivel(a, "ESCREVER '" + Desc + ":', " + V + Uni);
+          // EscreverLPC = 'MsgBox("' + Desc + ':" & ' + V + " & " + '" ' + Uni + '")';
+          if (Uni == "")
+            EscreverLPC = 'printf("%s' + formatoIndice + ' %' + TA + CharType + '\\n", "' + Desc + ':", ' + V + IndiceL + IndiceC + IndiceA + ");";
+          else
+            EscreverLPC = 'printf("%s' + formatoIndice + ' %' + TA + CharType + " %s" + '\\n", "' + Desc + ':", ' + V + IndiceL + IndiceC + IndiceA + ', "' + Uni + '"' + ");";
+
+
+        } else {
+          //textoLPC += TextoNivel(a, "ESCREVER " + V + IndiceL + IndiceC + IndiceA);
+          //EscreverLPC = 'MsgBox("' + Desc + ':" & ' + V + IndiceL + IndiceC + IndiceA + ')';
+          if ((IndiceC == "") && (IndiceA == ""))
+            EscreverLPC = 'printf("%' + TA + CharType + '\\n", ' + V + IndiceL + IndiceC + IndiceA + ");";
+          else
+            EscreverLPC = 'printf("%' + TA + CharType + '", ' + V + IndiceL + IndiceC + IndiceA + ");";
+        }
+        textoLPC += TextoNivel(a, EscreverLPC);
+
+
+
+        if ((DA != "") && (DA != "0")) {     // DimAltura
+          textoLPC += TextoNivel(3, "} /* iA */");
+          textoLPC += TextoNivel(3, 'printf("%c", "\\n");');
+          //textoLPC += TextoNivel(3, "ESCREVER    /* Muda de linha */");
+        }
+        if ((DC != "") && (DC != "0")) {  // DimColunas
+          textoLPC += TextoNivel(2, "} /* iC */");
+          textoLPC += TextoNivel(2, 'printf("%c", "\\n");');
+          //  textoLPC += TextoNivel(2, "ESCREVER    /* Muda de linha */");
+        }
+        if ((DL != "") && (DL != "0")) {  // DimLinhas
+          textoLPC += TextoNivel(1, "} /* iL */");
+          textoLPC += TextoNivel(1, 'printf("%c", "\\n");');
+          //textoLPC += TextoNivel(1, "ESCREVER    /* Muda de linha */");
+        }
+
+
+
+      }
+      if (L > 1) {
+        texto += TextoNivel(1, "</div>");
+        textoVBA += TextoNivel(1, "</div>");
+        textoLPC += TextoNivel(1, "</div>");
+      }
+      _ta = TextoNivel(0, "<b>Fim.</b>");
+			texto += _ta;
+			TracagemVetorLinhas.push(_ta);
+      textoVBA += TextoNivel(0, "<b>End Sub</b>");
+      textoLPC += TextoNivel(0, "<b>}</b>");
+
+      texto += TextoNivel(1, "</div>");
+      textoVBA += TextoNivel(1, "</div>");
+      textoLPC += TextoNivel(1, "</div>");
+
+      algoritmo.innerHTML = texto;
+			 VBA.innerHTML = textoVBA;
+      LPC.innerHTML = textoLPC;
+      //	alert("..");	
+      EspacoMemoria.innerHTML = TextoEspacoMemoria;
+	  
+	 // proc.value = TextoEspacoMemoria;
+	  
+
+
+      //proc.value = TabelaEspacoMemoriaVBALogico.length;
+      var ss = "";
+      var i;
+			ss += "<h1>Espaço de memória lógico VBA/C</h1>";
+      for (i = 0; i < TabelaEspacoMemoriaVBALogico.length; i++) {
+        var x = TabelaEspacoMemoriaVBALogico[i];
+        /*ss += x.ConstanteVarivel;
+        ss += x.Nome;
+        ss += x.TipoDeDados;
+        ss += x.Tamanho;
+        ss += x.DimensaoLinhas;
+        ss += x.DimensaoColunas;
+        ss += x.DimensaoAltura;
+        ss += x.Descricao;
+        ss += x.Unidades;
+        //ss += x.LimiteInferior;
+        //ss += x.LimiteSuperior;
+        ss += x.Valores;*/
+        ss += "<h2>" + x.Nome + "</h2>";
+        ss += "<div class='memo_celula100'>";
+        if (x.TipoDeDados == "Byte") {
+          ss += DesenhaBytesLogico(1, x);
+        } else if (x.TipoDeDados == "Integer") {
+          ss += DesenhaBytesLogico(2, x);
+        } else if (x.TipoDeDados == "Long") {
+          ss += DesenhaBytesLogico(4, x);
+        } else if (x.TipoDeDados == "Single") {
+				  ss += DesenhaBytesLogico(4, x);
+        } else if (x.TipoDeDados == "Double") {
+					ss += DesenhaBytesLogico(8, x);
+        } else if (x.TipoDeDados == "Decimal") {
+					ss += DesenhaBytesLogico(8, x);
+        } else if (x.TipoDeDados.indexOf("String") !=-1) {
+					ss += DesenhaBytesLogico(0, x);
+        } else if (x.TipoDeDados == "Date") {
+					ss += DesenhaBytesLogico(8, x);
+        }
+        ss += "</div>";
+        //proc.value = ss;
+      }
+      EspacoMemoriaVBALogico.innerHTML = ss;
+			
+      var sf = "";
+      var i;
+			sf += "<h1>Espaço de memória física VBA/C</h1>";
+			sf += "<table class='bits'>";
+      for (i = 0; i < TabelaEspacoMemoriaVBALogico.length; i++) {
+        var x = TabelaEspacoMemoriaVBALogico[i];
+        //sf += "<h2>" + x.Nome + "</h2>";
+        //sf += "<div class='memo_celula100'>";
+        if (x.TipoDeDados == "Byte") {
+					sf += DesenhaBytesFisicos(1, x); 
+        } else if (x.TipoDeDados == "Integer") {
+					sf += DesenhaBytesFisicos(2, x); 
+        } else if (x.TipoDeDados == "Long") {
+					sf += DesenhaBytesFisicos(4, x); 
+        } else if (x.TipoDeDados == "Single") {
+					sf += DesenhaBytesFisicos(4, x); 
+        } else if (x.TipoDeDados == "Double") {
+					sf += DesenhaBytesFisicos(8, x); 
+        } else if (x.TipoDeDados == "Decimal") {
+					sf += DesenhaBytesFisicos(0, x); 
+        } else if (x.TipoDeDados.indexOf("String") !=-1) {
+					sf += DesenhaBytesFisicos(0, x); 
+        } else if (x.TipoDeDados == "Date") {
+					sf += DesenhaBytesFisicos(0, x); 
+        }
+        //sf += "</div>";
+        //proc.value = sf;
+      }
+			sf +="</table>";
+      EspacoMemoriaVBAFisico.innerHTML = sf;
+						
+			
+			
+			
+			var _TracageminnerHTML = "<h1>Passos</h1>";
+			_TracageminnerHTML += "<table class='tracagem'><tr><th  class='tracagem'>Número</th><th  class='tracagem'>Instruções</th></tr>";
+			for (i = 0; i < TracagemVetorLinhas.length; i++) {
+        var x = TracagemVetorLinhas[i];
+				_TracageminnerHTML += "<tr>";
+				if (TracagemVetorLinhas.length > 100)
+				  if (i < 10) P = "P00" + i; 
+					else if (i < 100) P = "P0" + i; 
+					else P = "P" + i; 
+				else 	if (TracagemVetorLinhas.length > 10)
+				  if (i < 10) P = "P0" + i; 
+					else P = "P" + i; 
+				else
+					P = "P" + i;
+				
+					_TracageminnerHTML += "<td class=''>" + P + "</td>";
+					_TracageminnerHTML += "<td><pre>" + RemoveHTML(x, "") + "</pre></td>";
+				_TracageminnerHTML += "</tr>";
+			}
+			_TracageminnerHTML += "</table>";
+			
+			_TracageminnerHTML += "<h1>Tabela traçagem</h1>";
+			_TracageminnerHTML += "<table class='tracagem'>";
+			_TracageminnerHTML += "<tr><th  class='tracagem'>Passo</th>";
+			var linha = "<tr><td class='tracagem'></td>";
+			
+			TracagemVetorColunas.push("Passo(seg.)");
+			
+			for (i = 0; i < TracagemVetorColunas.length; i++) {
+				var x = TracagemVetorColunas[i];
+				_TracageminnerHTML += "<th  class='tracagem'>" + RemoveHTML(x, "") + "</th>";
+				linha += "<td class='tracagem'></td>";
+			}
+			
+			for (i = 0; i < tx_ColExtraTracagem.value; i++) {
+				_TracageminnerHTML += "<th class='tracagem' ></th>";
+				linha += "<td class='tracagem'></td>";
+			}
+			linha +="</tr>";
+
+						
+			_TracageminnerHTML += "<th colspan='2' class='tracagemEcra' >Saída (Ecrã)</th>";
+			_TracageminnerHTML += "</tr>";
+						
+			
+			for (i = 0; i < tx_LinhasTracagem.value; i++) {
+				_TracageminnerHTML += linha;
+			}
+			_TracageminnerHTML += "</table>";
+						
+
+			Tracagem.innerHTML = _TracageminnerHTML;
+     
+
+			
+			
+			/* *************************************************** */
+			/* *****DadosFicheiro DadosFicheiro DadosFicheiro *** */
+			/* *************************************************** */
+			/* Begin Begin Begin Begin Begin Begin Begin Begin */
+		  var vda = new Array();
+			vda.push(nome_algoritmo.value);
+      //vda.push(objetivo_algoritmo.value);
+      vda.push(data.value);
+      vda.push(autor.value);
+      vda.push(versao.value);
+      vda.push(obs.value);
+			
+			var L = document.getElementById('TConstantes').rows.length; //.rows[0].cells[0].childNodes.item(0);
+			var C = document.getElementById('TConstantes').rows[0].cells.length;
+			vda.push((L-1));
+			for (i=1; i < L; i++){
+				var t = "";
+				for (j=0; j < C; j++){
+					var T = document.getElementById('TConstantes').rows[i].cells[j].childNodes.item(0);
+					if (j==1) 
+						T = T.options[T.selectedIndex].text;
+					else 
+						T = T.value;
+					t += T;
+					if (j < (C-1)) t += " #";
+				}
+				vda.push(t);
+			}
+
+		  var tvars = new Array("TVariaveisEntrada", "TVariaveisAuxiliares", "TVariaveisSaida");
+      for (k = 0; k < tvars.length; k++) {
+			var L = document.getElementById(tvars[k]).rows.length; //.rows[0].cells[0].childNodes.item(0);
+			var C = document.getElementById(tvars[k]).rows[0].cells.length;
+			vda.push((L-1));
+			for (i=1; i < L; i++){
+				var t = "";
+				for (j=0; j < C; j++){
+					var T = document.getElementById(tvars[k]).rows[i].cells[j].childNodes.item(0);
+					if (j==1) 
+						T = T.options[T.selectedIndex].text;
+					else 
+						T = T.value;					
+					t += T;
+					if (j < (C-1)) t += " #";
+				}
+				vda.push(t);
+			  }
+			}
+			var da = "";
+			var chr13 = String.fromCharCode(13);
+			var chr10 = String.fromCharCode(10);
+			
+			for (i = 0; i < vda.length; i++) {
+       			 da += vda[i] + chr13 + "$$ ";
+			}
+			DadosFicheiroTextArea.value = da + "##" + objetivo_algoritmo.value + "##" + proc.value;
+			
+			/* *************************************************** */
+			/* *****DadosFicheiro DadosFicheiro DadosFicheiro *** */
+			/* *************************************************** */
+			/* End End End End End End End End End End End End End  */
+			
+
+      VBA.innerHTML = textoVBA;
+      LPC.innerHTML = textoLPC;
+      //alert(textoVBA);
+
+      /*
+      var a = "teste teste teset";
+      console.log(a.replace('e','')); // substitui apenas a primeira ocorrência
+      console.log(a.replace(/e/g,'')); // substitui todas as ocorrências
+      */
+      //texto = removeHTMLTags(texto);
+
+			
+			 
+      TextAreaAlgorithm.value = RemoveHTML(texto, "").replace(/'/g, '"');
+      TextAreaVBA.value = RemoveHTML(textoVBA, "");
+      TextAreaLPC.value = RemoveHTML(textoLPC, "");
+
+      //texto = texto.replace(/<\/?[^>]+(>|$)/g, "Chr(13)");
+
+
+      c13 = String.fromCharCode(13);
+      var d = new Date();
+      var dat = d.getFullYear() + "-" + String(d.getMonth() + 1) + "-" + String(d.getDate());
+      var hora = String(d.getHours()) + ":" + String(d.getMinutes()) + ":" + String(d.getSeconds());
+
+      HeaderTest = "CodigoTeste = " + NA + c13;
+      HeaderTest += "Data_Criacao = " + dat + " " + hora + c13;
+      HeaderTest += "DataT        = " + dat + " " + hora + c13;
+      HeaderTest += "AnoLectivo   = 20112012" + c13;
+      HeaderTest += "Semestre     = S1" + c13;
+      HeaderTest += "CdDocente    = pnunes" + c13;
+      HeaderTest += "## Question init 1" + c13;
+      HeaderTest += "Titulo_da_pergunta = Algoritmos - Pseudo-código." + c13;
+      HeaderTest += "Texto_da_Pergunta = Marque as linhas corretas do algoritmo de acordo com o seu objetivo." + c13;
+      HeaderTest += "Questoes_Aleatorias = 0" + c13;
+      HeaderTest += "Questoes_Detalhes_Aleatorias = 0" + c13;
+      HeaderTest += "Detalhe_por_Linha = 1" + c13;
+      HeaderTest += "## Question details ini";
+
+      TextAreaAlgorithmTest.value = HeaderTest + RemoveHTML(texto, "1 ").replace(/'/g, '"');
+      HeaderTest += "Titulo_da_pergunta = Programas em VBA - Excel." + c13;
+      HeaderTest += "Texto_da_Pergunta = Marque as linhas corretas do programa de acordo com o seu objetivo." + c13;
+      TextAreaVBATest.value = RemoveHTML(textoVBA, "1 ");
+      HeaderTest += "Titulo_da_pergunta = Programas em C." + c13;
+      TextAreaLPCTest.value = RemoveHTML(textoLPC, "1 ");
+    }
+		
+		function IntegerToBinary(valor, bytes) {
+      if (valor == "") {
+				var a = (bytes * 8);
+				var valorBinario = "";
+				for (i = 1; i < a; i++)
+					valorBinario += " ";
+			} else {
+			I = parseInt(valor);
+			var sinal = "0"; /* + */
+			if (I < 0) {
+				sinal = "1";
+				I = -I;
+			}
+			valorBinario = I.toString(2);
+ 
+      var a = (bytes * 8) - valorBinario.length;
+      var zeros = "";
+      for (i = 1; i < a; i++)
+        zeros += "0";
+      valorBinario = sinal + zeros + valorBinario;
+			}
+			return valorBinario;
+		}
+	
+		// http://www.raymundodeoliveira.eng.br/binario.html
+		/*
+		A norma IEEE 754, publicada em 1985, procurou uniformizar a maneira como as diferentes máquinas representam os números em ponto flutuante, bem como devem operá-los.
+		Essa norma define dois formatos básicos para os números em ponto flutuante: o formato simples,
+		com 32 bits e o duplo com 64 bits. 
+		O primeiro bit é para o sinal: 0 representa número positivo e 1 representa número negativo. 
+		No formato simples o expoente tem 8 bits e a mantissa tem 23 bits; 
+		no formato duplo, o expoente tem 11 bits e a mantissa 52 bits.
+
+		No formato simples, o menor expoente é representado por 00000001, valendo -126, e o maior expoente é representado por 11111110, valendo +127. Em ambos os casos, o expoente vale o número representado em binário menos 127.
+		No formato duplo, o menor expoente é representado por 00000000001, valendo -1022, e o maior expoente é representado por 11111111110, valendo +1023. Em ambos os casos, o expoente vale o número representado em binário menos 1023.
+
+		Single  1 sinal 8 exp 23 mantissa
+		*/
+		
+		function DecimalToBinary(valor, bytes) {
+		
+		
+		  if (valor == "") {
+				var a = (bytes * 8);
+				var valorBinario = "";
+				for (i = 1; i < a; i++)
+					valorBinario += " ";
+				return valorBinario;
+		 } else {
+			var v = parseFloat(valor);	
+			var I = parseInt(valor);
+			var sinal = "0"; /* + */
+			if (v < 0) {
+				sinal = "1";
+				I = -I;
+				v = -v;
+			}
+			var bitsI = I.toString(2);
+			var v = v - I;
+			var bits="";
+			
+			var norm = bitsI.length - 1;
+			var exp=0;
+			if (bytes==4) {
+				bits_exp = 8;
+				bits_mantissa = 23;
+				exp = 127 - norm;
+			} else if (bytes==8) {
+				bits_exp = 11;
+				bits_mantissa = 52;
+				exp = 1023 - norm;
+			}
+			
+			
+			var i;
+			exp = exp.toString(2);
+			var L = bits_exp - exp.length;
+			for (i=0; i<L;i++){
+				exp = "0" + exp;
+			}
+			L = 0;
+			while ((v > 0.0) && (L++ < bits_exp)) {
+				v *=2;
+				if (v >= 1.0) {
+					bits += "1";
+					v -=1.0;	
+				} else	
+					bits += "0";
+			}
+			var L = bits_mantissa - bitsI.length - bits.length;
+			for (i=0; i<L;i++){
+				bitsI = "0" + bitsI;
+			}
+			return sinal + exp + bitsI + bits;
+			}
+		}
+	
+
+    function DesenhaBytesLogico(bytes, x) {
+			valor = x.Valores;
+			tipo = x.TipoDeDados;
+			var t = "";
+			var DL = x.DimensaoLinhas;
+			var DC = x.DimensaoColunas;
+			var DA = x.DimensaoAltura;
+			var tipo = x.TipoDeDados;
+			var valor = x.Valores;
+			
+			if ((DL==0) && (DC==0) && (DA==0)) {  
+				if (tipo == "Double") {
+					t = DecimalToBinary(valor, 8);
+					t = DesenhaBitsFloatingPoint(8,1,1,t);
+				} else if (tipo == "Single") {
+					t = DecimalToBinary(valor, 4);
+					t = DesenhaBitsFloatingPoint(4,1,1,t);
+				} else if ((tipo == "Byte")|| (tipo == "Integer") || (tipo == "Long")) {
+					t = IntegerToBinary(valor, bytes);
+					t = DesenhaBitsInteger(bytes, t);
+				} else if (tipo.indexOf("String") !=-1) {
+					va = FormataTexto(x.Valores, x.Tamanho);
+					var r = 0;
+				//	proc.value = va;
+				//alert(String.charCodeAt(va[r]));
+					var k;
+					for (k=0; k < va.length; k++, r++) {
+						chr = va.charAt(r);
+						v = chr.charCodeAt(chr);
+						valorBinario = IntegerToBinary(v, 1);
+						t += DesenhaBitsInteger(1, valorBinario);
+					}
+				}
+				
+			} else if ((DL > 0) && (DC > 0) && (DA > 0)) {  
+						
+			}
+      return t;
+    }
+		function DesenhaBitsInteger(bytes, valorBinario) {
+			// cabeçalho	
+			t = "<table class='bits'>";
+      t += "<tr><th class='bit_cabecalho'>bit</th>";
+      for (i = 0; i < bytes * 8; i++)
+        t += "<td class='bit_cabecalho'>" + (bytes * 8 - i - 1) + "</td>";
+      t += "</tr>";
+      // detalhe
+			t += "<tr><td></td>";
+      for (i = 0; i < bytes * 8; i++)
+        t += "<td class='bit'>" + valorBinario.substr(i, 1) + "</td>";
+      t += "</tr>";
+      t += "</table>";
+		  return t;
+		}
+		function DesenhaBitsFloatingPoint(bytes, sinal, exp, valor) {
+			if (bytes==4) {
+				bits_exp = 8;
+			} else if (bytes==8) {
+				bits_exp = 11;
+			}
+      t = "<table class='bits'>";
+      //v = parseInt(valor);
+      /*valorBinario = String(valor);
+      var a = (bytes * 8) - valorBinario.length;
+      var zeros = "";
+      for (i = 1; i <= a; i++)
+        zeros += "0";
+      valorBinario = zeros + valorBinario;*/
+	  valorBinario = valor;
+      t += "<tr><th class='bit_cabecalho'>bit</th>";
+      for (i = 0; i < bytes * 8; i++)
+        t += "<td class='bit_cabecalho'>" + (bytes * 8 - i - 1) + "</td>";
+      t += "</tr>";
+      t += "<tr><td></td>";
+      for (i = 0; i < bytes * 8; i++) {
+				if ((sinal ==1) && (i==0))
+					t += "<td class='bit_sinal'>" + valorBinario.substr(i, 1) + "</td>";
+				else if ((sinal ==1) && (i >=1) && (i <= bits_exp))
+					t += "<td class='bit_exp'>" + valorBinario.substr(i, 1) + "</td>";
+				else
+					t += "<td class='bit'>" + valorBinario.substr(i, 1) + "</td>";
+			}	
+      t += "</tr>";
+      t += "</table>";
+		
+      return t;
+    }
+
+		/* MEMO MEMO MEMO MEMO MEMO MEMO MEMO MEMO MEMO MEMO MEMO MEMO  MEMO MEMO MEMO MEMO MEMO MEMO MEMO MEMO MEMO MEMO MEMO MEMO  */
+		/* FISICA FISICA FISICA FISICA FISICA FISICA FISICA FISICA FISICA */
+		/* BEGIN  BEGIN BEGIN BEGIN BEGIN BEGIN BEGIN BEGIN BEGIN BEGIN   */
+		function DesenhaBytesFisicos(bytes, x) {
+				//	t = "<table class='bits'>";
+		  /*ss += x.ConstanteVarivel;
+        ss += x.Nome;
+        ss += x.TipoDeDados;
+        ss += x.Tamanho;
+        ss += x.DimensaoLinhas;
+        ss += x.DimensaoColunas;
+        ss += x.DimensaoAltura;
+        ss += x.Descricao;
+        ss += x.Unidades;
+        //ss += x.LimiteInferior;
+        //ss += x.LimiteSuperior;
+        ss += x.Valores;*/
+			
+			var DL = parseInt(x.DimensaoLinhas);
+			var DC = parseInt(x.DimensaoColunas);
+			var DA = parseInt(x.DimensaoAltura);	
+			
+		  var max_linhas = tx_max_linhas.value;
+      var max_colunas = tx_max_colunas.value;
+      var max_altura = tx_max_altura.value;
+			
+			var tipo = x.TipoDeDados;
+			var valor = x.Valores;
+			var t = "";
+			var BitsCor = tx_BitRedGreenCheck.checked;
+			if ((tipo == "Byte")|| (tipo == "Integer") || (tipo == "Long") || (tipo == "Single") || (tipo == "Double")) {
+				var tipoIRO = "I";
+				if ((tipo == "Single") || (tipo == "Double")) tipoIRO = "R";
+				if ((DL + DC + DA) == 0) {	
+					var tipo = "I";
+					if ((tipo == "Single") || (tipo == "Double")) {
+						t = DecimalToBinary(valor, bytes);
+						tipo = "R";
+					} else
+						t = IntegerToBinary(valor, bytes);
+					t = DesenhaBitsFisicos(bytes, t, tipoIRO, x.Nome, BitsCor);
+				} else if ((DL > 0) && (DC == 0 ) && (DA ==0)) {
+					v2 =  String(x.Valores).split(",");
+					var r = 0;
+					var i,j,k;
+					var ia=0,ja=0,ka=0;
+					//for (i=0; i<DL; i++) {
+					  //ia = i;
+							for (k=0; k < DL; k++, r++) {
+								if (k==0) NA = x.Nome; else NA = "";
+								nome = NA + "[" + k + "]";
+								if (r < v2.length) va = v2[r]; else va= "";	
+								if (v2.length==1) va = v2[0];
+								if ((tipo == "Single") || (tipo == "Double")) 
+									valorBinario = DecimalToBinary(va, bytes);
+								else
+									valorBinario = IntegerToBinary(va, bytes);
+								t += DesenhaBitsFisicos(bytes, valorBinario, tipoIRO, nome, BitsCor);
+                if ((k == max_linhas-2) && (max_linhas < DL)){
+									valorBinario = IntegerToBinary(0, bytes);
+									valorBinario = valorBinario.replace(/0/g, ".");
+									nome = "...";
+									t += DesenhaBitsFisicos(bytes, valorBinario, tipoIRO, nome, BitsCor);
+								  k = DL-2; 
+								}
+							}
+					//}
+				} else if ((DL > 0) && (DC > 0 ) && (DA ==0)) {
+					v2 =  String(x.Valores).split(",");
+					var r = 0;
+					var i,j,k;
+					var ia=0,ja=0,ka=0;
+					for (i=0; i<DL; i++) {
+					  ia = i;
+							for (k=0; k < DC; k++, r++) {
+								if (i+k==0) NA = x.Nome; else NA = "";
+								if (i==ia++) IA = "[" + i + "]"; else IA = "";
+								nome = NA + IA + "[" + k + "]";
+								if (r < v2.length) va = v2[r]; else va= "";	
+								if (v2.length==1) va = v2[0];
+								if ((tipo == "Single") || (tipo == "Double")) 
+									valorBinario = DecimalToBinary(va, bytes);
+								else
+									valorBinario = IntegerToBinary(va, bytes);
+								t += DesenhaBitsFisicos(bytes, valorBinario, tipoIRO, nome, BitsCor);
+								if ((k == max_colunas-2) && (max_colunas < DC)){
+									valorBinario = IntegerToBinary(0, bytes);
+									valorBinario = valorBinario.replace(/0/g, ".");
+									nome = "...";
+									t += DesenhaBitsFisicos(bytes, valorBinario, tipoIRO, nome, BitsCor);
+								  k = DC-2; 
+								}
+							}
+							if ((i == max_linhas-2) && (max_linhas < DL)){
+									valorBinario = IntegerToBinary(0, bytes);
+									valorBinario = valorBinario.replace(/0/g, ".");
+									nome = "...";
+									t += DesenhaBitsFisicos(bytes, valorBinario, tipoIRO, nome, BitsCor);
+								  i = DL-2; 
+							}
+					}
+				} else {
+					v2 =  String(x.Valores).split(",");
+					var r = 0;
+					var i,j,k;
+					var ia=0,ja=0,ka=0;
+					for (i=0; i<DL; i++) {
+					  ia = i;
+						for (j=0; j<DC; j++) {
+							ja = j;
+							for (k=0; k < DA; k++, r++) {
+								if (i+j+k==0) NA = x.Nome; else NA = "";
+								if (i==ia++) IA = "[" + i + "]"; else IA = "";
+								if (j==ja++) JA = "[" + j + "]"; else JA = "";
+								nome = NA + IA + JA + "[" + k + "]";
+								if (r < v2.length) va = v2[r]; else va= "";	
+								if (v2.length==1) va = v2[0];
+								if ((tipo == "Single") || (tipo == "Double")) 
+									valorBinario = DecimalToBinary(va, bytes);
+								else
+									valorBinario = IntegerToBinary(va, bytes);
+								t += DesenhaBitsFisicos(bytes, valorBinario, tipoIRO, nome, BitsCor);
+								if ((k == max_altura-2) && (max_altura < DA)){
+									valorBinario = IntegerToBinary(0, bytes);
+									valorBinario = valorBinario.replace(/0/g, ".");
+									nome = "...";
+									t += DesenhaBitsFisicos(bytes, valorBinario, tipoIRO, nome, BitsCor);
+								  k = DA-2; 
+								}
+							}
+							if ((j == max_colunas-2) && (max_colunas < DC)){
+									valorBinario = IntegerToBinary(0, bytes);
+									valorBinario = valorBinario.replace(/0/g, ".");
+									nome = "...";
+									t += DesenhaBitsFisicos(bytes, valorBinario, tipoIRO, nome, BitsCor);
+								  j = DC-2; 
+							}
+						}
+						if ((i == max_linhas-2) && (max_linhas < DL)){
+									valorBinario = IntegerToBinary(0, bytes);
+									valorBinario = valorBinario.replace(/0/g, ".");
+									nome = "...";
+									t += DesenhaBitsFisicos(bytes, valorBinario, tipoIRO, nome, BitsCor);
+								  i = DL-2; 
+						}
+					}
+				}	
+			} else if (tipo.indexOf("String") != -1) {
+				if ((DL + DC + DA) == 0) {
+				
+					va = FormataTexto(x.Valores, x.Tamanho);
+					r = 0;
+					for (k=0; k < va.length; k++, r++) {
+						CHR = va.charAt(k);
+						VB = CHR.charCodeAt();
+						valorBinario = IntegerToBinary(VB, 1);
+						if (k==0) nome = x.Nome; else nome = "";
+						nome += " " + CHR + "";
+						t += DesenhaBitsFisicos(1, valorBinario, "I", nome, BitsCor);
+					}
+				} else if ((DL > 0) && (DC == 0 ) && (DA ==0)) {
+				t = "";
+					v2 =  String(x.Valores).split(",");
+					var r = 0;
+					var i,j,k;
+					var ia=0,ja=0,ka=0;
+					var r = 0;
+					for (i=0; i<DL; i++, r++) {
+					  ia = i;
+						//for (j=0; j<DC; j++) {
+							//ja = j;
+							//for (k=0; k < DA; k++, r++) {
+								if (r < v2.length) va = v2[r]; else va= " ";	
+								if (v2.length==1) va = v2[0];
+								va2 = FormataTexto(va, x.Tamanho);
+								//ka = k; 
+								for (k2=0; k2 < va2.length; k2++) {
+									if (i+k2==0) NA = x.Nome; else NA = "";
+									if (i==ia++) IA = "[" + i + "]"; else IA = "";
+									//if (j==ja++) JA = "[" + j + "]"; else JA = "";
+									//if (k==ka++) KA = "[" + k + "]"; else KA = "";
+									nome = NA + IA + "[" + k2 + "]";
+									CHR = va2.charAt(k2);
+									VB = CHR.charCodeAt();
+									valorBinario = IntegerToBinary(VB, 1);
+									nome += " " + CHR + "";
+									t += DesenhaBitsFisicos(1, valorBinario, "O", nome, BitsCor);
+								}
+							//}
+						//}
+					}
+				} else if ((DL > 0) && (DC > 0 ) && (DA ==0)) {
+					t = "";
+					v2 =  String(x.Valores).split(",");
+					var r = 0;
+					var i,j,k;
+					var ia=0,ja=0,ka=0;
+					var r = 0;
+					for (i=0; i<DL; i++) {
+					  ia = i;
+						for (j=0; j<DC; j++, r++) {
+							ja = j;
+							//for (k=0; k < DA; k++, r++) {
+								if (r < v2.length) va = v2[r]; else va= " ";	
+								if (v2.length==1) va = v2[0];
+								va2 = FormataTexto(va, x.Tamanho);
+								//ka = k; 
+								for (k2=0; k2 < va2.length; k2++) {
+									if (i+j+k2==0) NA = x.Nome; else NA = "";
+									if (i==ia++) IA = "[" + i + "]"; else IA = "";
+									if (j==ja++) JA = "[" + j + "]"; else JA = "";
+									//if (k==ka++) KA = "[" + k + "]"; else KA = "";
+									nome = NA + IA + JA + "[" + k2 + "]";
+									CHR = va2.charAt(k2);
+									VB = CHR.charCodeAt();
+									valorBinario = IntegerToBinary(VB, 1);
+									nome += " " + CHR + "";
+									t += DesenhaBitsFisicos(1, valorBinario, "O", nome, BitsCor);
+								}
+							//}
+						}
+					}
+				} else if ((DL > 0) && (DC > 0 ) && (DA > 0)) {
+					t = "";
+					v2 =  String(x.Valores).split(",");
+					var r = 0;
+					var i,j,k;
+					var ia=0,ja=0,ka=0;	
+					r = 0;
+					for (i=0; i<DL; i++) {
+					  ia = i;
+						for (j=0; j<DC; j++) {
+							ja = j;
+							for (k=0; k < DA; k++, r++) {
+								if (r < v2.length) va = v2[r]; else va= " ";	
+								if (v2.length==1) va = v2[0];
+								va2 = FormataTexto(va, x.Tamanho);
+								ka = k; 
+								for (k2=0; k2 < va2.length; k2++) {
+									if (i+j+k+k2==0) NA = x.Nome; else NA = "";
+									if (i==ia++) IA = "[" + i + "]"; else IA = "";
+									if (j==ja++) JA = "[" + j + "]"; else JA = "";
+									if (k==ka++) KA = "[" + k + "]"; else KA = "";
+									nome = NA + IA + JA + KA + "[" + k2 + "]";
+									CHR = va2.charAt(k2);
+									VB = CHR.charCodeAt();
+									valorBinario = IntegerToBinary(VB, 1);
+									nome += " " + CHR + "";
+									t += DesenhaBitsFisicos(1, valorBinario, "O", nome, BitsCor);
+								}
+							}
+						}
+					}
+				}
+			}	
+      return t; 
+    }
+		function FormataTexto(texto, tamanho) {
+		  var n = parseInt(tamanho)
+		  texto = texto.substr(0, n);
+			var k;
+			for (k=texto.length; k < n; k++) 
+			  texto = texto + " ";
+			return texto;
+		}
+		
+		function DesenhaBitsFisicos(bytes, valorBinario, tipo, nome, BitsCor) {
+			/* tipo I-inteiro, R-real, O-outro */
+			var sinal=0;
+			var bits_exp=0;
+			if (tipo == "R") {
+				sinal = 1;
+				if (bytes==4) {
+					bits_exp = 8;
+				} else if (bytes==8) {
+					bits_exp = 11;
+				}
+			} else if (tipo == "I")	{
+				sinal = 1;
+				bits_exp = 0;
+			} else {
+				sinal = 0;
+				bits_exp = 0;
+			}
+		   var t="";
+		   for (i = 0, k=0; i < bytes; i++) {
+					t += "<tr>";
+					if (i == 0) t+="<td class='bit' style='width:auto; text-align: right;' rowspan='" + bytes + " '>" + nome + " </td>";
+					for (j = 0; j < 8; j++) {
+						VB = valorBinario.substr(k++, 1);
+						if ((sinal ==1) && (k==0))
+							t += "<td class='bit_sinal'>" + VB + "</td>";
+						else if ((sinal ==1) && (k >=1) && (k <= bits_exp))
+							t += "<td class='bit_exp'>" + VB + "</td>";
+						else {
+						  if (BitsCor)
+								t += "<td class='bit" + VB + "'>" + VB + "</td>";
+							else
+								t += "<td class='bit'>" + VB + "</td>";
+							//t += "<td class='bit'>" + valorBinario.substr(k++, 1) + "</td>";
+						}	
+					}
+					t += "</tr>";
+			}
+        return t;
+		}
+		/* MEMO MEMO MEMO MEMO MEMO MEMO MEMO MEMO MEMO MEMO MEMO MEMO  MEMO MEMO MEMO MEMO MEMO MEMO MEMO MEMO MEMO MEMO MEMO MEMO  */
+		/* FISICA FISICA FISICA FISICA FISICA FISICA FISICA FISICA FISICA */
+		/* END END END END END END END END END END END END END END END    */
+
+
+    function RemoveHTML(texto, textInI) {
+      texto = texto.replace(/<p class='n0'>/g, textInI + "");
+      texto = texto.replace(/<p class='n1'>/g, textInI + "  ");
+      texto = texto.replace(/<p class='n2'>/g, textInI + "    ");
+      texto = texto.replace(/<p class='n3'>/g, textInI + "      ");
+      texto = texto.replace(/<p class='n4'>/g, textInI + "        ");
+      texto = texto.replace(/<p>/g, textInI + "        ");
+
+      texto = texto.replace(/<\/p>/g, String.fromCharCode(13));
+
+      texto = texto.replace(/<b>/g, "");
+      texto = texto.replace(/<\/b>/g, "");
+
+      texto = texto.replace(/<pre>/g, "");
+      texto = texto.replace(/<\/pre>/g, "");
+
+      texto = texto.replace(/<div class='doc'>/g, "");
+      texto = texto.replace(/<div class='corpo'>/g, "");
+      texto = texto.replace(/<div class='proc'>/g, "");
+      texto = texto.replace(/<div class='saida'>/g, "");
+      texto = texto.replace(/<div class='entrada'>/g, "");
+      texto = texto.replace(/<\/div>/g, "");
+
+
+      texto = texto.replace(/&lt;/g, "<");
+      texto = texto.replace(/&gt;/g, ">");
+
+
+      return texto;
+    }
+
+    function Ver(id) {
+      var dd = new Array("Algoritmo", "EspacoMemoria", "VBA", "LPC", "DivAlgorithmSendTest", "DivAlgorithmSend");
+      var i;
+      d = document.getElementById(id);
+      //alert(d.style.position);
+
+			
+      if (d.style.position == "")
+        d.style.position = 'relative';
+
+      if (d.style.position == 'relative') {
+        d.style.position = 'absolute';
+        d.style.width = '80%';
+
+				
+		
+        var x = event.clientX;
+        var y = event.clientY;
+		
+		y = 0;
+		x = 0;
+
+        if (tx_PercCheck.checked)
+          d.style.top = tx_PercVerTopo.value + 'px';
+        else
+          d.style.top = y + document.body.scrollTop + 20 + 'px';
+
+
+
+        d.style.left = tx_PercVer.value + "%";
+
+      } else {
+        d.style.position = 'relative';
+        d.style.width = '100%';
+        d.style.top = '0px';
+        d.style.left = '0px';
+      }
+
+      for (i = 0; i < dd.length; i++) {
+
+        if (dd[i] != id) {
+          d = document.getElementById(dd[i]);
+          d.style.position = 'relative';
+          d.style.width = '100%';
+          d.style.top = '0px';
+          d.style.left = '0px';
+        }
+      }
+    }
+
+ 
+
+		
+		function Ler(a)
+    {
+			var x = DadosFicheiroTextArea.value;
+			var v3 = x.split("##");
+			
+		/* linha(s) com objectivo */
+			objetivo_algoritmo.value = v3[1];
+			/* linha(s) com código */
+			proc.value = v3[2];			
+			
+			// 2013-02-17
+			//var v = v3[0].split(String.fromCharCode(13));
+			var v = v3[0].split("$$ ");
+			
+		
+			
+			var chr13 = String.fromCharCode(13);
+			
+			var i=0;
+			nome_algoritmo.value = v[i++];
+      data.value = v[i++];
+      autor.value = v[i++];
+      versao.value = v[i++];
+      obs.value = v[i++];
+			// constantes
+			n_c.value = v[i++];
+			var N=0;
+			CriaTabelaE(n_c.value, 'Constantes', N, 1);
+			var L = n_c.value;
+			for (k=1; k <= L; k++) {
+				var linha = v[i++];
+				var v2 = linha.split(" #");
+				var C = v2.length;
+			  for (j=0; j < C; j++){
+					  var T = document.getElementById('TConstantes').rows[k].cells[j].childNodes.item(0);
+					  if (j==1) {
+						  var r;
+						  for (r=0; r< AlgorithmDataTypes.length; r++)
+								if (v2[j] == AlgorithmDataTypes[r]) break;
+							if (r< AlgorithmDataTypes.length) T.selectedIndex = r+1;else T.selectedIndex = 0;
+						} else 
+						  T.value = v2[j];
+				}
+			}
+			
+			var tvars = new Array("VariaveisEntrada", "VariaveisAuxiliares", "VariaveisSaida");
+			for (m=0; m <tvars.length; m++) {
+			
+				var L = v[i++];
+				if (i==0)	{
+					n_ve.value = L;
+				} else if (i==1)  {
+					n_a.value = L;	
+				} else if (i==2)  {
+					n_vs.value = L;	
+				}
+			 var N=0;
+			 CriaTabelaE(L, tvars[m], N, 1);
+			
+			 for (k=1; k <= L; k++) {
+				var linha = v[i++];
+				var v2 = linha.split(" #");
+				var C = v2.length;
+			  for (j=0; j < C; j++){
+					  var T = document.getElementById("T" + tvars[m]).rows[k].cells[j].childNodes.item(0);
+					  if (j==1) {
+						  var r;
+						  for (r=0; r< AlgorithmDataTypes.length; r++)
+								if (v2[j] == AlgorithmDataTypes[r]) break;
+							if (r< AlgorithmDataTypes.length) T.selectedIndex = r+1;else T.selectedIndex = 0;
+							
+						} else 
+						  T.value = v2[j];
+				}
+			 }
+			}
+			Gerar(1);
+		}
+		
+		function Gravar(a)
+    {
+				a =  nome_algoritmo.value + ".txt";
+				var myObject, newfile;
+        myObject = new ActiveXObject("Scripting.FileSystemObject");
+        newfile = myObject.CreateTextFile(a, true);
+				//newfile
+								
+    }
+
+		function BoasVindas() {
+		
+  		var d = new Date();
+		  var t = "Olá"; 
+			if (d.getHours() < 3)
+			 t = "Já merece um copo." ;
+			else if (d.getHours() < 8)
+			 t = "Muito bom dia, madrugador.";
+			else if (d.getHours() < 13)
+			 t = "Muito bom dia";
+			else if ((d.getHours() >=13 ) && (d.getHours() <=14))
+			 t = "Não são horas para fazer algoritmos, são horas para almoço.";
+			else if (d.getHours() < 19)
+			 t = "Muito boa tarte.";
+			else 
+			 t = "Boa noite.";
+			document.write("<p style='margin-left: 1em;'>" + t + "</p>");
+				
+		}
+		
+		
+	
+  </script>
+<style type='text/css'>
+              input.button {
+                height: 25px;
+                width: 12em;
+              }
+              input.button2 {
+                height: 25px;
+                width: 12em;
+                color: red;
+              } 
+            </style>
+</head>
+<body>
+  <!-- <form id='form1'>
+		<textarea id='textarea1'> </textarea>
+	
+	</form> -->
+  <!--Cabeçaho-->
+  <div style="width: 90%; float: left; background-color: #FFFFFF;">
+
+    <script type="text/javascript">
+		 // <h2>Gerador de algoritmos 3D " + Versao +(Versão de: 2011-10-18 10:28)</h2>
+			VersaoNumber();
+    </script>
+
+    <h3>Gerador de pseudo-código (pseudo-linguagem)</h3>
+    <h3>Gerador de código VBA</h3>
+    <h3>Gerador de código C</h3>
+	<p><font color='green'>AVISO: Esta versão do Gerador funciona em todos os browsers. O gerador está a funcionar se o "Tempo de elaboração" começar a contar.</font></p>
+	<p><font color='red'>No entanto, em alguns browers (FireFox, ...) as caixas aparecem no início da página.</font></p>
+
+	
+
+    <script type="text/javascript">
+			BoasVindas();
+			
+			
+			
+	function LerFicheiro(a) {
+		if(window.XMLHttpRequest) { // codefor IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp=new XMLHttpRequest();
+		} else { 								// codefor IE6, IE5
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		
+  	xmlhttp.onreadystatechange=function()   {
+     if (xmlhttp.readyState==4 && xmlhttp.status==200)      {
+		  DadosFicheiroTextArea.value = xmlhttp.responseText;
+		 	Ler("nada");
+			Gerar(1);
+			alert("Algoritmo: " + nome_algoritmo.value + " versão " + versao.value  + " recuperado.");
+     } //else 
+		 // alert("Agoritmo: " + nome_algoritmo.value + " não recuperado.");
+		 //alert(xmlhttp.readyState);
+		
+    }
+	 F1.nome_algoritmo2.value = nome_algoritmo.value;
+	 F1.versao2.value = versao.value;
+	 	 
+	 	var nome_ficheiro = "./Algoritmos/" +  String(F1.Username.value) + "/" 
+		//var nome_ficheiro =  String(F1.Username.value) + "/" 
+ 		+ String(F1.Username.value)+ "_" +
+		String(F1.nome_algoritmo2.value) + "_" + 
+		F1.versao2.value +  "_dados" +  ".txt"; 
+		
+	 
+	//	xmlhttp.open("GET", "http://193.137.232.45/pnunes/GeradorAlgoritmosHTMLJavaScript/Algoritmos/"+ nome_ficheiro, true);
+		xmlhttp.open("GET", nome_ficheiro, true);
+		xmlhttp.send();
+		
+				
+		}
+			
+			function EnviaDados(){
+			
+				F1.dados_algoritmo.value = DadosFicheiroTextArea.value;
+				F1.nome_algoritmo2.value = nome_algoritmo.value;
+				F1.algoritmo_completo.value = TextAreaAlgorithm.value;
+				F1.versao2.value = versao.value;
+				
+				//T;
+				//alert(F1.algoritmo_completo.value);
+				
+				return true;
+			}
+			
+    </script>
+
+    <h2>Dados sobre o algoritmo</h2>
+    <table style='font-size: 12pt;'>
+      <tr>
+        <td>Tempo de elaboração</td>
+        <td>
+          <input class='t' readonly='readonly' style='font-size: large; background-color: yellow;'  type='text' id='tempo_elaboracao' name='tempo_elaboracao' size='10' />
+        </td>
+      </tr>
+      <tr>
+        <td>Registo em Servidor (lessi)</td>
+        <td>
+          <form name='F1' onsubmit="return EnviaDados()" method='POST' enctype='multipart/form-data' action="GravaFicheiro3D.php">
+            <input type='hidden' id='dados_algoritmo' name='dados_algoritmo' />
+          <input type='hidden' id='algoritmo_completo' name='algoritmo_completo' />
+          <input type='hidden' id='nome_algoritmo2' name='nome_algoritmo2' value='' />
+          <input type='hidden' id='versao2' name='versao2' value='' />
+          <p><b>Username</b>
+            <input class='t' type='text' id='Username' name='Username' size='12' value='NERGA' />
+            <b>Password</b>
+            <input class='t' type='password' id='Password' name='Password' size='10' value='12345' />
+            (DDNNN - Dia de nascimento + 3 primeiros digittos do BI) </p>
+          <hr />
+          <p>
+            <input class='button' type='submit' value='Enviar' />
+            <input class='button' type='Button' value='Recuperar' onclick="LerFicheiro(nome_algoritmo.value);" />
+          </p>
+          <hr />
+		  
+      <p>- Para enviar/recuperar o algoritmo para o Servidor, deve abrir a página localizada            no Servidor: <a href='http://192.168.23.32/pnunes/GeradorAlgoritmosHTMLJavaScript/GeradorCodigoAlgoritmos3D.html'>              No IPG</a> <a href='http://193.137.232.45/pnunes/GeradorAlgoritmosHTMLJavaScript/GeradorCodigoAlgoritmos3D.html'>          
+              Fora</a> - Ver algoritmos/lista algoritmos: <a href='http://192.168.23.32/pnunes/GeradorAlgoritmosHTMLJavaScript/Algoritmos/'>No IPG</a> 
+				<a href='http://193.137.232.45/pnunes/GeradorAlgoritmosHTMLJavaScript/Algoritmos/'>Fora</a> </p>
+	<p></p>			
+			
+			<hr />			  
+           <p> - Para recuperar um algorimo do Servidor deve preencher o campos Algoritmo, Username
+            e Versão com os mesmos valores que utilizou quando enviou o algoritmo para o servidor. 
+			</p>
+
+			<p>- Também pode consultar a lista de algoritmos para obter os dados referidos. </p> 
+         
+								
+          </form>        </td>
+      </tr>
+      <tr>
+        <td>Algoritmo</td>
+        <td>
+          <input onkeyup="Gerar(1);" class='t' type='text' id='nome_algoritmo' name='nome_algoritmo'
+            size='100' value='Nome_do_algoritmo_sem_espacos_entre_as_palavras' />
+        </td>
+      </tr>
+      <tr>
+        <td>Objetivo </td>
+        <td>
+          <!--  <input class='t' type='textarea' id='objetivo_algoritmo' name='objetivo_algoritmo' size='80' value='Descrição exata do que faz o algoritmo' />
+		  -->
+          <textarea onkeyup="Gerar(1);" rows="15" cols="100" class='t' id='objetivo_algoritmo'
+            name='objetivo_algoritmo' >Descrição exata do que faz o algoritmo</textarea>
+        </td>
+      </tr>
+      <tr>
+        <td>Data </td>
+        <td>
+          <input onkeyup="Gerar(1);" class='t' type='text' id='data' name='data' size='80'
+            value='' />
+        </td>
+      </tr>
+      <tr>
+        <td>Autor</td>
+        <td>
+          <input onkeyup="Gerar(1);" class='t' type='text' id='autor' name='autor' size='80'
+            value='Paulo Nunes' />
+        </td>
+      </tr>
+      <tr>
+        <td>Versão </td>
+        <td>
+          <input onkeyup="Gerar(1);" class='t' type='text' id='versao' name='versao' size='30'
+            value='1.0' />
+        </td>
+      </tr>
+      <tr>
+        <td>Observações </td>
+        <td>
+          <input onkeyup="Gerar(1);" class='t' type='text' id='obs' name='obs' size='80' value='' />
+        </td>
+      </tr>
+      <tr>
+        <td>Instruções de processamento </td>
+        <td><a href="http://www.w3schools.com/tags/ref_symbols.asp">Símbolos matemáticos:</a>
+          × &uarr; &larr; &sum; &prod; &radic; &alpha; &infin; &empty; &notin; &isin; &and;
+          &or; &sim; &ne; &le; &ge; &forall; &Theta; &Delta; &Sigma; &Phi; &beta; &alpha;
+          &piv; &permil; &euro; &trade; &Pi;
+          <textarea  rows="30" cols="100" class='t' id='proc' name='proc'
+            onkeyup="Gerar(1);">  coloque aqui o seu código de processamento
+  INSTRUÇÃO 1
+  INSTRUÇÃO 2
+  INSTRUÇÃO ... 
+  INSTRUÇÃO N</textarea>
+        </td>
+		</tr>
+        <tr>
+          <td></td>
+          <td>
+            
+            <p>
+              <input class='button' type='Button' value='Gravar' onclick="Gravar('dados.txt');" />
+              <input class='button' type='Button' value='Ler Dados Ficheiro' onclick="Ler('dados.txt');" />
+              <!-- <input class='button' type='Button' value='Ler Ficheiro' onclick="LerFicheiro(nome_algoritmo.value);" />
+              --><input class='button' type='Button'  value='Dados Ficheiro' onclick='Ver("DadosFicheiro");' />
+            </p>
+            <p>
+              <input class='button' type='Button' value='Gerar' onclick="Gerar(1);" />
+              <input class='button2' type='Button' value='Limpar campos tabelas' onclick="LimpaCampos();" />
+              <input class='button2' type='Button' value='Gerar com variáveis' onclick="GerarVar(1);" />
+              <input class='button2' type='Button' value='Gerar com traço' onclick="GerarVar(0);" />
+              <input type="checkbox" id="gerarOnKeyUp"  name="gerarOnKeyUp" checked='checked' onchange="Gerar(1);" /><span>
+                Gerar KeyUp</span> </p>
+            <p>
+              <input class='button' type='Button' value='Algoritmo' onclick='Ver("Algoritmo");' />
+              <input class='button' type='Button' value='Traçagem' onclick='Ver("Tracagem");' />
+              <input class='button' type='Button' value='Memória' onclick='Ver("EspacoMemoria");' />
+              <input class='button' type='Button' value='Memória Lógica VBA' onclick='Ver("EspacoMemoriaVBALogico");' />
+							<input class='button' type='Button' value='Memória Física VBA' onclick='Ver("EspacoMemoriaVBAFisico");' />
+            </p>
+            <p>
+              <input class='button' type='Button'  value='VBA' onclick='Ver("VBA");' />
+              <input class='button' type='Button'  value='C' onclick='Ver("LPC");' />
+              <input class='button' type='Button' value='Agoritmo TXT' onclick='Ver("DivAlgorithmSend");' />
+              <input class='button' type='Button'  value='Test' onclick='Ver("DivAlgorithmSendTest");' />
+            </p>
+            <p>
+              <input class='button' type='Button'  value='Tipos dados VBA' onclick='Ver("DivTiposDadosVBA");' />
+              <input class='button' type='Button'  value='Tipos dados C' onclick='Ver("DivTiposDadosC");' />
+            </p>
+          </td>
+        </tr>
+      <tr>
+        <td></td>
+        <td>
+          <input class='button' type='Button' value='Algoritmo: Zoom +' onclick="MudaPercAlgoritmo(11);" />
+          <input class='button' type='Button' value='Algoritmo: Zoom -' onclick="MudaPercAlgoritmo(-10);" />
+          <input class='button' type='Button' value='Algoritmo: Zoom 100%' onclick="MudaPercAlgoritmo100();" />
+          <p>
+            <input class='button' type='Button' value='Font +' onclick="Fonte(25);" />
+            <input class='button' type='Button' value='Font -' onclick="Fonte(-25);" />
+            <select style='width: 12em;' onchange="MudaFonteAlgoritmo(this.options[this.selectedIndex].text);">
+              <option>Arial</option>
+              <option>Arial Narrow</option>
+              <option>Consolas</option>
+              <option>Monospace</option>
+              <option>Times New Roman</option>
+              <option>Verdana</option>
+            </select>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <p>Memória, número máximo de: Linhas
+            <input size="3" type="text" name="tx_max_linhas" id='tx_max_linhas' value='9' onchange="Gerar(1);">
+            Colunas<input size="3" type="text" name="tx_max_colunas" value='9' id='tx_max_colunas'
+              onchange="Gerar(1);">
+            Altura
+            <input size="3" type="text" name="tx_max_altura" id='tx_max_altura' value='9' onchange="Gerar(1);">
+						Bit-Red/Green<input type="checkbox" onchange="Gerar(1);"  id="tx_BitRedGreenCheck" name="tx_BitRedGreenCheck" />
+					</p>
+          <hr />
+          <p>Traçagem: Linhas<input class='t' type='text' id='tx_LinhasTracagem' name='tx_LinhasTracagem'
+            size='3' value='15' onclick='Gerar(1);' />
+            Altura<input class='t' type='text' id='tx_AlturaTracagem' name='tx_AlturaTracagem'
+              size='3' value='2' onclick='Gerar(1);' />
+            Largura<input class='t' type='text' id='tx_LarguraTracagem' name='tx_LarguraTracagem'
+              size='3' value='4' onclick='Gerar(1);' />
+            Col.Extra<input class='t' type='text' id='tx_ColExtraTracagem' name='tx_ColExtraTracagem'
+              size='3' value='0' onclick='Gerar(1);' />
+          </p>
+          <hr />
+          <p>Posição(%)<input class='t' onchange="Gerar(1);" value='75' type='text' id='tx_PercVer'
+            name='tx_PercVer' size='3' />
+            Topo(px)<input type="checkbox"  id="tx_PercCheck" name="tx_PercCheck" onchange="Gerar(1);" />
+            <input class='t' type='text'  name='tx_PercVerTopo' id='tx_PercVerTopo' size='3' value='600' />
+          </p>
+		  <hr />
+		  <p>Para colocar valores nas constantes/variáveis com uma ou mais dimensões coloque os valores separados pelo carater vírgula (,). Exemplo: 1,2,3. Exemplo: Fraco, Bom.</p>
+		   <p>Os valores são preenchidos por linha.</p>
+        </td>
+      </tr>
+    </table>
+    <h2 class="T2">Constantes</h2>
+    <div id="Constantes" style="position: relative; left: 0">
+      <p>Quantidade
+        <input size="3" type="text" name="n_c" id='n_c' value='2' onchange="CriaTabelaE(n_c.value, 'Constantes', N, 1);Gerar(1);">
+        <input size="3" type="Button" value='+' onclick="CriaTabelaE_Add(n_c.value, 'Constantes', N, 1);Gerar(1);">
+        <input size="3" type="Button" value='-' onclick="CriaTabelaE_Delete(n_c.value, 'Constantes', N, 1);Gerar(1);">
+      </p>
+    </div>
+    <h2>Variáveis</h2>
+    <h3 class="T2">Entrada</h3>
+    <div id="VariaveisEntrada" style="position: relative; left: 0">
+      <p>Quantidade
+        <input size="3" type="text" name="n_ve" id='n_ve' value='3' onchange="CriaTabelaE(n_ve.value, 'VariaveisEntrada', N, 1);Gerar(1);">
+        <input size="3" type="Button" value='+' onclick="CriaTabelaE_Add(n_c.value, 'VariaveisEntrada', N, 1);Gerar(1);">
+        <input size="3" type="Button" value='-' onclick="CriaTabelaE_Delete(n_c.value, 'VariaveisEntrada', N, 1);Gerar(1);">
+      </p>
+    </div>
+    <h3 class="T2">Auxiliares</h3>
+    <div id="VariaveisAuxiliares" style="position: relative; left: 0">
+      <p>Quantidade
+        <input size="3" type="text" name="n_a" id='n_a' value='3' onchange="CriaTabelaE(n_a.value, 'VariaveisAuxiliares', N, 1);Gerar(1);">
+        <input size="3" type="Button" value='+' onclick="CriaTabelaE_Add(n_c.value, 'VariaveisAuxiliares', N, 1);Gerar(1);">
+        <input size="3" type="Button" value='-' onclick="CriaTabelaE_Delete(n_c.value, 'VariaveisAuxiliares', N, 1);Gerar(1);">
+      </p>
+    </div>
+    <h3 class="T2">Saída</h3>
+    <div id="VariaveisSaida" style="position: relative; left: 0">
+      <p>Quantidade
+        <input size="3" type="text" id='n_vs' name="n_vs" value='2' onchange="CriaTabelaE(n_vs.value, 'VariaveisSaida', N, 1);Gerar(1);">
+        <input size="3" type="Button" value='+' onclick="CriaTabelaE_Add(n_c.value, 'VariaveisSaida', N, 1);Gerar(1);">
+        <input size="3" type="Button" value='-' onclick="CriaTabelaE_Delete(n_c.value, 'VariaveisSaida', N, 1);Gerar(1);">
+      </p>
+    </div>
+    <h3 class="T2">Número de linhas de código</h3>
+    <div style="position: relative; left: 0">
+      <p>Quantidade
+        <input size="3" type="text" name="NLinhasCodigo" id="NLinhasCodigo" value='6'>
+      </p>
+    </div>
+  </div>
+  <!-- Conteúdos -->
+  <div id="AlgoritmoButtons" class='alg' style="height: 2em; border: solid thin black;">
+    <h1>Algoritmo - pseudo-código</h1>
+    <input class='button' type='Button' value='Gerar' onclick="Gerar(1);" />
+    <input class='button' type='Button' value='Algoritmo: Zoom +' onclick="MudaPercAlgoritmo(1);" />
+    <input class='button' type='Button' value='Algoritmo: Zoom -' onclick="MudaPercAlgoritmo(-1);" />
+    <input class='button' type='Button' value='Algoritmo: Zoom 100%' onclick="MudaPercAlgoritmo100();" />
+    <input class='button' type='Button' value='Gerar com variáveis' onclick="GerarVar(1);" />
+    <input class='button' type='Button' value='Gerar com traço' onclick="GerarVar(0);" />
+    <input class='button' type='Button' value='Font +' onclick="Fonte(25);" />
+    <input class='button' type='Button' value='Font -' onclick="Fonte(-25);" />
+    <select onchange="MudaFonteAlgoritmo(this.options[this.selectedIndex].text);">
+      <option>Arial</option>
+      <option>Arial Narrow</option>
+      <option>Consolas</option>
+      <option>Monospace</option>
+      <option>Times New Roman</option>
+      <option>Verdana</option>
+    </select>
+  </div>
+  <div id="Algoritmo" class="alg" style="width: 100%; font-size: 100%">
+  </div>
+  <div id="EspacoMemoria" class="alg" style="width: 100%; font-size: 100%; background-color: white;">
+  </div>
+  <div id="Tracagem" class="alg" style="width: 100%; font-size: 100%; background-color: white;">
+  </div>
+  <div id="DadosFicheiro" class="alg" style="width: 100%; font-size: 100%">
+    <textarea id='DadosFicheiroTextArea' cols='100' rows='30'></textarea>
+  </div>
+  <div id="EspacoMemoriaVBALogico" class="alg" style="width: 100%; font-size: 100%;
+    background-color: white;">
+  </div>
+  <div id="EspacoMemoriaVBAFisico" class="alg" style="width: 100%; font-size: 100%;
+    background-color: white;">
+  </div>
+  <div id="VBAButtons" class='alg' style="height: 2em; border: solid thin black;">
+    <h1>Sub-rotina em VBA</h1>
+    <input class='button' type='Button' value='Gerar' onclick="Gerar(1);" />
+    <input class='button' type='Button' value='Algoritmo: Zoom +' onclick="MudaPercAlgoritmo(1);" />
+    <input class='button' type='Button' value='Algoritmo: Zoom -' onclick="MudaPercAlgoritmo(-1);" />
+    <input class='button' type='Button' value='Algoritmo: Zoom 100%' onclick="MudaPercAlgoritmo100();" />
+    <input class='button' type='Button' value='Gerar com variáveis' onclick="GerarVar(1);" />
+    <input class='button' type='Button' value='Gerar com traço' onclick="GerarVar(0);" />
+    <input class='button' type='Button' value='Font +' onclick="Fonte(25);" />
+    <input class='button' type='Button' value='Font -' onclick="Fonte(-25);" />
+    <select onchange="MudaFonteAlgoritmo(this.options[this.selectedIndex].text);">
+      <option>Arial</option>
+      <option>Arial Narrow</option>
+      <option>Consolas</option>
+      <option>Monospace</option>
+      <option>Times New Roman</option>
+      <option>Verdana</option>
+    </select>
+  </div>
+  <div id="VBA" class="alg" style="width: 100%; font-size: 100%">
+  </div>
+  <div id="LPCButtons" class='alg' style="height: 2em; border: solid thin black;">
+    <h1>Programa em C</h1>
+    <input class='button' type='Button' value='Gerar' onclick="Gerar(1);" />
+    <input class='button' type='Button' value='Algoritmo: Zoom +' onclick="MudaPercAlgoritmo(1);" />
+    <input class='button' type='Button' value='Algoritmo: Zoom -' onclick="MudaPercAlgoritmo(-1);" />
+    <input class='button' type='Button' value='Algoritmo: Zoom 100%' onclick="MudaPercAlgoritmo100();" />
+    <input class='button' type='Button' value='Gerar com variáveis' onclick="GerarVar(1);" />
+    <input class='button' type='Button' value='Gerar com traço' onclick="GerarVar(0);" />
+    <input class='button' type='Button' value='Font +' onclick="Fonte(25);" />
+    <input class='button' type='Button' value='Font -' onclick="Fonte(-25);" />
+    <select onchange="MudaFonteAlgoritmo(this.options[this.selectedIndex].text);">
+      <option>Arial</option>
+      <option>Arial Narrow</option>
+      <option>Consolas</option>
+      <option>Monospace</option>
+      <option>Times New Roman</option>
+      <option>Verdana</option>
+    </select>
+  </div>
+  <div id="LPC" class="alg" style="width: 100%; font-size: 100%">
+  </div>
+  <div id="DivAlgorithmSend" class='alg' style="width: 100%; font-size: 100%; float: left;">
+    <h1>Caixas de texto com o código para cópiar para outra aplicação</h1>
+    <p>
+    <input class='button' type='Button' value='Zoom +' onclick="MudaLinhas(3);" />
+    <input class='button' type='Button' value='Zoom -' onclick="MudaLinhas(-4);" />
+    </p>
+    <textarea rows="50" cols="100" class='t' id='TextAreaAlgorithm'></textarea>
+    <textarea rows="50" cols="100" class='t' id='TextAreaVBA'></textarea>
+    <textarea rows="50" cols="100" class='t' id='TextAreaLPC'></textarea>
+  </div>
+  <div id="DivAlgorithmSendTest" class='alg' style="width: 100%; font-size: 100%; float: left;">
+    <h1>Caixas de texto com o código para cópiar e importar para o gerador de testes.</h1>
+    <p>
+    <input class='button' type='Button' value='Zoom +' onclick="MudaLinhasTest(3);" />
+    <input class='button' type='Button' value='Zoom -' onclick="MudaLinhasTest(-4);" />
+    </p>
+    <textarea rows="50" cols="100" class='t' id='TextAreaAlgorithmTest'></textarea>
+    <textarea rows="50" cols="100" class='t' id='TextAreaVBATest'></textarea>
+    <textarea rows="50" cols="100" class='t' id='TextAreaLPCTest'></textarea>
+  </div>
+  <div id="DivTiposDadosVBA" class='alg' style="width: 100%; font-size: 100%; float: left;">
+    <a href='http://msdn.microsoft.com/en-us/library/47zceaw7.aspx'>Tipos VBA</a>
+    <h1>Tipos VBA</h1>
+    <h2>Inteiro</h2>
+    <table>
+      <tr>
+        <th>Tipo</th>
+        <th>Espaço armazenamento</th>
+        <th>Limite inferior</th>
+        <th>Limite superior</th>
+        <th>Digitos completos</th>
+      </tr>
+      <tr>
+        <td>Boolean</td>
+        <td>2 bytes</td>
+        <td>False</td>
+        <td>True</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Byte</td>
+        <td>1 byte </td>
+        <td>0</td>
+        <td>255</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Integer </td>
+        <td>2 bytes </td>
+        <td>-32,768 </td>
+        <td>32,767)</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>Long </td>
+        <td>4 bytes </td>
+        <td>-2,147,483,648 </td>
+        <td>2,147,483,647</td>
+        <td>9</td>
+      </tr>
+      <tr>
+        <td>Decimal </td>
+        <td>16 bytes</td>
+        <td>-79,228,162,514,264,337,593,543,950,335</td>
+        <td>+79,228,162,514,264,337,593,543,950,335</td>
+        <td>28</td>
+      </tr>
+    </table>
+    <h2>Real</h2>
+    <table>
+      <tr>
+        <th>Tipo</th>
+        <th>Espaço armazenamento</th>
+        <th>Limite inferior</th>
+        <th>Limite superior</th>
+        <th>Obs</th>
+      </tr>
+      <tr>
+        <td>Decimal </td>
+        <td>16 bytes</td>
+        <td>-7.9228162514264337593543950335, -0.0000000000000000000000000001</td>
+        <td>+7.9228162514264337593543950335; +0.0000000000000000000000000001 (+/-1E-28)</td>
+        <td>1 Inteira, 28 decimais</td>
+      </tr>
+      <tr>
+        <td>Single</td>
+        <td>4 bytes</td>
+        <td>-3.4028235E+38
+          <br>
+          -1.401298E-45 </td>
+        <td>1.401298E-45
+          <br>
+          3.4028235E+38</td>
+        <td>6 Inteiras/Decimais</td>
+      </tr>
+      <tr>
+        <td>Double</td>
+        <td>8 bytes</td>
+        <td>-1.79769313486231570E+308<br>
+          -4.94065645841246544E-324 </td>
+        <td>4.94065645841246544E-324
+          <br>
+          1.79769313486231570E+308</td>
+        <td>15 Inteiras/Decimais</td>
+      </tr>
+      <tr>
+        <td>Currency </td>
+        <td>8 bytes</td>
+        <td>-922,337,203,685,477.5808 </td>
+        <td>922,337,203,685,477.5807</td>
+        <td></td>
+      </tr>
+    </table>
+    <h2>Outros</h2>
+    <table>
+      <tr>
+        <th>Tipo</th>
+        <th>Espaço armazenamento</th>
+        <th>Limite inferior</th>
+        <th>Limite superior</th>
+        <th>Obs</th>
+      </tr>
+      <tr>
+        <td>Date</td>
+        <td>8 bytes</td>
+        <td>0:00:00 (midnight) n January 1, 0001 </td>
+        <td>11:59:59 PM on December 31, 9999</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>String</td>
+        <td>Depends on implementing platform</td>
+        <td>0</td>
+        <td>approximately 2 billion Unicode characters</td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+  <div id="DivTiposDadosC" class='alg' style="width: 100%; font-size: 100%; float: left;">
+    <h1>Tipos C</h1>
+    <h2>Inteiro</h2>
+    <table>
+      <tr>
+        <th>Tipo </th>
+        <th>Espaço armazenamento</th>
+        <th>Limite inferior </th>
+        <th>Limite superior </th>
+        <th>Obs</th>
+      </tr>
+      <tr>
+        <td>signed char </td>
+        <td>1</td>
+        <td>-127 </td>
+        <td>127 </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>unsigned char </td>
+        <td>1</td>
+        <td>0 </td>
+        <td>255 </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>short </td>
+        <td>2</td>
+        <td>-32767 </td>
+        <td>32767 </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>unsigned short </td>
+        <td>2</td>
+        <td>0 </td>
+        <td>65535 </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>int </td>
+        <td>2</td>
+        <td>-32767 </td>
+        <td>32767 </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>unsigned int </td>
+        <td>2</td>
+        <td>0 </td>
+        <td>65535 </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>long </td>
+        <td>4</td>
+        <td>-2147483647 </td>
+        <td>2147483647 </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>unsigned long </td>
+        <td>4</td>
+        <td>0 </td>
+        <td>4294967295 </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>signed long long </td>
+        <td>8</td>
+        <td>-9223372036854775807 </td>
+        <td>9223372036854775807 </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>unsigned long long </td>
+        <td>8</td>
+        <td>0 </td>
+        <td>18446744073709551615 </td>
+        <td></td>
+      </tr>
+    </table>
+    <h2>Reais</h2>
+    <table>
+      <tr>
+        <th>Tipo </th>
+        <th>Espaço armazenamento</th>
+        <th>Limite inferior </th>
+        <th>Limite superior </th>
+        <th>Obs</th>
+      </tr>
+      <tr>
+        <td>float </td>
+        <td>4</td>
+        <td>-3.4028235E+38
+          <br>
+          -1.401298E-45 </td>
+        <td>1.401298E-45
+          <br>
+          3.4028235E+38</td>
+        <td>6 </td>
+      </tr>
+      <tr>
+        <td>double </td>
+        <td>8</td>
+        <td>-1.79769313486231570E+308<br>
+          -4.94065645841246544E-324 </td>
+        <td>4.94065645841246544E-324
+          <br>
+          1.79769313486231570E+308</td>
+        <td>15 </td>
+      </tr>
+      <tr>
+        <td>long double </td>
+        <td>10</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+    <!--<textarea rows="50" cols="150" class='t'>
+	  
+    #include <stdio.h>
+    #include <limits.h>
+    /* http://www.exforsys.com/tutorials/c-language/c-programming-language-data-types.html */
+    void main()
+    {
+    printf("Signed char minimum value: %d\n", SCHAR_MIN );
+    printf("Signed char maximum value: %d\n", SCHAR_MAX );
+    printf("Unsigned char minimum value: %d\n", 0 );
+    printf("Unsigned char maximum value: %d\n", UCHAR_MAX );
+    printf("Char minimum value: %d\n", CHAR_MIN );
+    printf("Char maximum value: %d\n", CHAR_MAX );
+    printf("Signed short minimum value: %d\n", SHRT_MIN );
+    printf("Signed short maximum value: %d\n", SHRT_MAX );
+    printf("Unsigned short minimum value: %d\n", 0 );
+    printf("Unsigned short maximum value: %d\n", USHRT_MAX );
+    printf("Signed int minimum value: %d\n", INT_MIN );
+    printf("Signed int maximum value: %d\n", INT_MAX );
+    printf("Unsigned int minimum value: %u\n", 0 );
+    printf("Unsigned int maximum value: %u\n", UINT_MAX );
+    printf("Signed long minimum value: %ld\n", LONG_MIN );
+    printf("Signed long maximum value: %ld\n", LONG_MAX );
+    printf("Unsigned long minimum value: %lu\n", 0 );
+    printf("Unsigned long maximum value: %lu\n", ULONG_MAX );
+    printf("Signed long long minimum value: %lld\n", LLONG_MIN );
+    printf("Signed long long maximum value: %lld\n", LLONG_MAX );
+    printf("Unsigned long long minimum value: %lu\n", 0 );
+    printf("Unsigned long long maximum value: %llu\n", ULLONG_MAX );
+    
+    
+    
+    
+    
+    }
+
+    Type	Minimum Value	Maximum Value
+    signed char	-127	127
+    unsigned char	0	255
+    short	-32.767	32.767
+    unsigned short	0	65.535
+    int														 -32.767   32.767
+    unsigned int												 0   65.535
+    long										-2.147.483.647 	 2.147.483.647   10
+    unsigned long												 0   4.294.967.295
+    signed long long	-9223372036854775807	 9.223.372.036.854.775.807   18
+    unsigned long long	                 0   18.446.744.073.709.551.615  19
+
+    Minimum value of a float: 1.1755e-38 Maximum value of a float: 3.4028e+38 Precision of a float: 6 digits 
+    Minimum value of a double: 2.2251e-308 Maximum value of a double: 1.7977e+308 Precision of a double: 15 digits 
+    Minimum value of a long double: 3.3621e-4932 Maximum value of a long double: 1.1897e+4932 Precision of a long double: 18 digits 
+	</textarea>-->
+  </div>
+  <div style="margin-top: 10px; padding: 5px; float: left; width: 100%; height: 30px;
+    background-color: #120000;">
+    <p>Paulo Nunes, 2011</p>
+  </div>
+
+  <script type="text/javascript">
+    var d = new Date();
+    var dat = d.getFullYear() + "-" + String(d.getMonth() + 1) + "-" + String(d.getDate());
+    var hora = String(d.getHours()) + ":" + String(d.getMinutes()) + ":" + String(d.getSeconds());
+
+    data.value = dat + " " + hora;
+    op = 1;
+    N = new Array(1, 1, 1, 1);
+    //N = new Array(0, 0, 0, 1);
+    n_ve.value = N[0];
+    n_vs.value = N[1];
+    n_a.value = N[2];
+    n_c.value = N[3];
+
+    tx_max_linhas.value = 9;
+    tx_max_colunas.value = 9;
+    tx_max_altura.value = 9;
+
+    //	0,	0,	0,	0,	0,	1,0,1,0,	0,	0,	2,	0,	1,	0,	0,	2,	0,	1,	0,	0
+
+
+
+    CriaTabelaE(n_ve.value, 'VariaveisEntrada', N, op);
+    CriaTabelaE(n_vs.value, 'VariaveisSaida', N, op);
+    CriaTabelaE(n_a.value, 'VariaveisAuxiliares', N, op);
+    CriaTabelaE(n_c.value, 'Constantes', N, op);
+    Gerar(1);
+    MudaPercAlgoritmo100();
+
+
+    var dd = new Array("Algoritmo", "VBA", "LPC", "Algoritmo", "VBA", "LPC", "EspacoMemoria");
+    var i;
+    for (i = 0; i < dd.length; i++) {
+      d = document.getElementById(dd[i]).style.position;
+      d = 'relative';
+    }
+
+    //Ver("EspacoMemoria");
+
+
+
+    function CriaTabelaE_Add(n, name, NN, opo) {
+      var VE = document.getElementById(name);
+
+      LL = new Array("", "Tipo", "Tamanho", "DimLinhas", "DimColunas", "DimAltura", "Desc", "Uni", "", "", "");
+
+      if ((name == "VariaveisEntrada") || (name == "VariaveisSaida") || (name == "VariaveisAuxiliares")) {
+        table_heads = new Array(
+          "Variável",
+          "Tipo de dados",
+					"Tamanho",
+					"Dimensão linhas",
+					"Dimensão colunas",
+					"Dimensão altura",
+          "Descrição",
+          "Unidades",
+          "Limite inferior",
+		      "Limite superior",
+					"Valor(es)(,)");
+        LL[8] = ">= Li";
+        LL[9] = "<= Ls";
+      } else {
+        table_heads = new Array(
+          "Constante",
+          "Tipo de dados",
+					"Tamanho",
+					"Dimensão linhas",
+					"Dimensão colunas",
+					"Dimensão altura",
+          "Descrição",
+          "Unidades",
+		  "Valor(es)(,)");
+        LL[8] = "Valor";
+      }
+      LL[0] = table_heads[0];
+      if (name == "VariaveisEntrada") LL[0] = "Entrada";
+      else if (name == "VariaveisSaida") LL[0] = "Saida";
+      else if (name == "VariaveisAuxiliares") LL[0] = "Aux";
+
+
+      var t = document.getElementById("T" + name);
+      var mytablebody = t.lastChild; // tBodies; //.item(0).value;
+
+      //t.removeChild(mytablebody);
+      //return;
+
+      /*var s="";	
+      for (x in t){		s += x + String.fromCharCode(13);}
+      proc.value = s;*/
+
+      // creating new cells
+      for (j = 0; j < 1; j++) {
+        // creates an element whose tag name is TR
+        mycurrent_row = document.createElement("tr");
+
+        for (i = 0; i < table_heads.length; i++) {
+          mycurrent_cell = document.createElement("td");
+          size = 8;
+          if (i == 6) size = 30;
+          if (i == 0) size = 20;
+          if (i == 1) {
+            /*ss = "<select size='1' name='C" + j + i + "'>";
+            ss += "</select>";
+            input_text = document.createElement(ss);*/
+            input_text = document.createElement("select");
+	     	input_text.setAttribute("size","1");
+			input_text.setAttribute("size","1");
+
+            var op = document.createElement("option");
+            op.text = " ";
+            //input_text.add(op);
+			input_text.appendChild(op);
+
+            var tipos = AlgorithmDataTypes;
+            //var tipos2 = new Array("", ":Vetor", ":Matriz");
+            var tipos2 = new Array("");
+
+            for (y = 0; y < tipos2.length; y++)
+              for (k = 0; k < tipos.length; k++) {
+                var op = document.createElement("option");
+                //op.text = tipos[k] + tipos2[y];
+				theText = document.createTextNode(tipos[k] + tipos2[y]);
+				op.appendChild(theText);
+                //input_text.add(op);
+				input_text.appendChild(op);
+              }
+
+          } else {
+            if (opo == 1) {
+              if ((i >= 2) && (i <= 5))
+                XX = 0;
+              else
+                XX = LL[i] + j;
+              /* if (i==3) 
+              XX = 2;
+					*/
+              if (i==2) 
+              XX = 2; 
+
+            } else {
+              XX = "________";
+              if (i == 2)
+                XX = "________________________";
+
+            }
+            /*input_text = document.createElement("<input onkeyup='Gerar(1);' type='text' size='" + size + "' name='C" + j + i + "'" + " value='" + XX + "' />");
+            input_text.type='text';
+            input_text.onkeyup='Gerar(1);';
+            input_text.size="'" + size + "'";
+            input_text.name="'C" + j + i + "'";  
+            input_text.value="'" + XX + "'";*/
+
+            input_text = document.createElement("input");
+			input_text.setAttribute("onkeyup", "Gerar(1);");
+			input_text.setAttribute("type", "text");
+			input_text.setAttribute("size", size);
+			input_text.setAttribute("name", "C" + j + i );
+			input_text.setAttribute("value", XX);
+			
+
+          }
+
+          input_text.onchange = function () {
+            Gerar(1);
+          }
+
+          mycurrent_cell.appendChild(input_text);
+          mycurrent_cell.setAttribute("align", "left");
+          mycurrent_row.appendChild(mycurrent_cell);
+        }
+        // appends the row TR into TBODY
+        mytablebody.appendChild(mycurrent_row);
+      }
+    }
+
+    function CriaTabelaE_Delete(n, name, NN, opo) {
+      var t = document.getElementById("T" + name).lastChild;
+      var mytablebody = t.lastChild; // tBodies; //.item(0).value;
+      t.removeChild(mytablebody);
+    }
+    // setInterval("document.getElementById('Algoritmo').style.top = document.body.scrollTop+10+'px'", 1000)
+
+		function timeMostarTempo() {
+      var t = setInterval("MostarTempo('tempo_elaboracao')", 1000);
+    }
+		function MostarTempo(e) {
+			var d = new Date();
+			t = parseInt((d - DataHoraInicio) / 1000.0);
+			m = parseInt(t / 60);
+			s = t % 60;
+			if (s<10)
+			 s = "0"+s;
+			 t = m + ":" + s;
+      document.getElementById(e).value = t;
+    }		
+		timeMostarTempo(); 
+
+
+
+
+		var theRules = new Array();
+if (document.styleSheets[0].cssRules)
+	theRules = document.styleSheets[0].cssRules
+else if (document.styleSheets[0].rules)
+	theRules = document.styleSheets[0].rules
+
+		
+	/*	var s="";
+		for (z in theRules[0])
+			s += z;
+			alert(s);*/
+		
+		//setStyleByTag(
+		
+		
+  </script>
+
+  <!-- <div id="boxes">
+<div class="fixo">
+	<div class="titulo">
+	  <h6>Escreva certo</h6>
+	</div>
+	<div class="conteudo">
+		<p>O verbo haver quando empregado 
+com o sentido de existir, é invariável.</p>
+		<p>Exemplos:<br /> 
+		 <q>Havia muitos e-mails</q><br />
+		 <q>Houve muitas páginas</q><br />
+		 <q>Pode haver outras DIVs</q>
+		  </p>
+	</div>
+</div> -->
+</body>
+</html>
