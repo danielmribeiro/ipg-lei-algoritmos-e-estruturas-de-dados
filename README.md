@@ -77,3 +77,7 @@ Upon completion of this course, students should be able to:
     - The instructor will provide guidance for both individual and group projects.
     - Project presentations will take place in the classroom, allowing students to observe practical applications of theoretical concepts.
 - **Final Exam (Normal and Resit Periods)**: 100%
+
+-----
+
+ For more course-related assignments, check out the [Engenharia Informatica repository](https://github.com/danielmribeiro/engenharia-informatica).
